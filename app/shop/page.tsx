@@ -38,6 +38,7 @@ const Shop: React.FC = () => {
                 <p >{item.name}</p>
                 <p>Price: ${item.price}</p>
               </div>
+              
               <button
                 onClick={() => addItems(item.id)} // Add item to cart
                 
