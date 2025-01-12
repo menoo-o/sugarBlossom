@@ -1,5 +1,5 @@
 // import auth from "@/auth";
-import { redirect } from "next/navigation";
+
 // import auth from "@/utils/auth";
 
 export default async function Login() {

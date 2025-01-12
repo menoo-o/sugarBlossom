@@ -1,0 +1,132 @@
+/* Base Styles */
+.hero-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .hero-img {
+    width: 100%; /* Make image responsive */
+    height: 550px;
+  }
+  
+
+  .hero-caption {
+    font-family: inherit;
+    position: absolute;
+    top: 18%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: #c9c5b8; /* Text color on top of the image */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Add readability over images */
+  }
+  
+  .hero-caption h2 {
+    font-size: 3em;
+    line-height: 2.5cap;
+    letter-spacing: 0.3cap;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .shop-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+ /* Base Button Styles */
+.btn {
+  padding: 10px 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #FFFFFF !important; /* White text for better contrast */
+  background: #34C759; /* Sea Green as default background */
+}
+
+/* Glassmorphism Button Styles */
+.btn-glass {
+  background: rgba(52, 199, 89, 0.2); /* Semi-transparent Sea Green */
+  backdrop-filter: blur(12px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Subtle shadow */
+  color: #FFFFFF; /* White text */
+}
+
+/* Hover Effects */
+.btn-glass:hover {
+  background: rgba(52, 199, 89, 0.3); /* Slightly more opaque Sea Green */
+  transform: scale(1.05); /* Slight scale-up */
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5); /* Enhanced shadow */
+}
+
+/* Unique "SHOP NOW" Button Styles */
+.shop-btn .btn-glass {
+  background: rgba(255, 198, 125, 0.2); /* Semi-transparent Coral Pink */
+  border: 1px solid rgba(255, 198, 125, 0.5); /* Coral Pink border */
+  color: #ffffff; /* Deep Charcoal text */
+}
+
+.shop-btn .btn-glass:hover {
+  background: rgba(255, 198, 125, 0.3); /* Slightly more opaque Coral Pink */
+  box-shadow: 0 12px 40px 0 rgba(255, 198, 125, 0.5); /* Coral Pink shadow */
+}
+
+
+
+  
+  /* Media Query: Tablets and Up */
+  @media (min-width: 768px) {
+    .hero-container {
+      padding: 40px;
+    }
+  
+    .hero-caption h2 {
+      font-size: 2.4rem;
+    }
+  
+    .shop-now {
+      font-size: 1.2rem;
+      padding: 12px 24px;
+    }
+  }
+  
+  /* Media Query: Desktops and Larger Screens */
+  @media (min-width: 1024px) {
+    .hero-container {
+      flex-direction: row; /* Adjust layout for larger screens */
+      justify-content: space-between;
+    }
+  
+    .hero-img {
+      flex: 1;
+      max-width: 90%;
+    }
+  
+    .hero-caption {
+      top: 30%;
+      left: 10%;
+      transform: translate(0, 0);
+      text-align: left;
+    }
+  
+    .shop-btn {
+      bottom: 10%;
+      left: 10%;
+      transform: translate(0, 0);
+    }
+  }
+  

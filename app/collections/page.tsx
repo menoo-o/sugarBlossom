@@ -7,11 +7,12 @@ interface Product {
   id: string;
   name: string;
   price: string;
-  descrip: string;
+  description: string;
   imageUrl: string;
 }
 
 export default function Collections() {
+
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -19,6 +20,7 @@ export default function Collections() {
     async function fetchProducts() {
       try {
         const response = await fetch('/api/getCollections');
+        
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -55,7 +57,7 @@ export default function Collections() {
             />
 
             <h2>{product.name}</h2>
-            <p>{product.descrip}</p>
+            <p>{product.description}</p>
             <p>Price: {product.price}</p>
           </div>
         ))}

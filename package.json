@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "appwrite": "^16.1.0",
     "axios": "^1.7.9",
     "next": "15.1.3",

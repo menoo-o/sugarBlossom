@@ -10,7 +10,7 @@ export async function GET() {
       id: doc.$id, // Use Appwrite's generated Document ID
       name: doc.name,
       price: doc.price,
-      descrip: doc.descrip,
+      description: doc.description,
       imageUrl: storage.getFileView(bucketId, doc.fileId),
     }));
 
