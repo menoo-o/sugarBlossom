@@ -43,9 +43,9 @@ export default function Navbar() {
             <Link href="/" className='logo-link'>
               <Image
                 alt="logo"
-                width={100}
+                width={95}
                 height={100}
-                src="/logov5.png"
+                src="/logov3.png"
                 className="logo-img"
               />
             </Link>
