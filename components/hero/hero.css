@@ -17,8 +17,9 @@
   .hero-caption {
     font-family: inherit;
     position: absolute;
-    top: 18%;
-    left: 40%;
+    width: 350px;
+    top: 15%;
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
     color: #c9c5b8; /* Text color on top of the image */
@@ -26,11 +27,12 @@
   }
   
   .hero-caption h2 {
-    font-size: 3em;
+    font-size: 2em;
     line-height: 2.5cap;
     letter-spacing: 0.3cap;
     font-weight: 600;
     margin: 0;
+    text-align: center;
   }
   
   .shop-btn {

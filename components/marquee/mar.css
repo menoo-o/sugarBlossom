@@ -1,0 +1,66 @@
+/* Marquee Container */
+.marquee-container {
+    width: 100%;
+    overflow: hidden; /* Hide overflowing content */
+    white-space: nowrap; /* Keep text in a single line */
+    background-color: #34c75998; /* Sea Green background */
+    color: #FFFFFF; /* White text */
+    padding: 10px 0;
+    font-size: 1.15em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 1.8em; /* Fixed height to show one line at a time */
+  }
+  
+  /* Marquee Content */
+  .marquee-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .marquee-content span {
+    display: block; /* Each span appears on a new line */
+    text-align: center; /* Center the text */
+    position: absolute;
+    text-transform: uppercase;
+    width: 100%;
+    top: 0;
+    left: 100%; /* Start off-screen to the right */
+    animation: slide-text 12s ease-in-out infinite; /* Total animation duration */
+  }
+  
+  /* Keyframes for sliding text */
+  @keyframes slide-text {
+    0% {
+      left: 100%; /* Start off-screen to the right */
+    }
+    16.66% {
+      left: 0; /* Slide into view */
+    }
+    33.33% {
+      left: 0; /* Stay in view for 2 seconds */
+    }
+    50% {
+      left: -100%; /* Slide out to the left */
+    }
+    100% {
+      left: -100%; /* Stay off-screen to the left */
+    }
+  }
+  
+  /* Delay each span's animation */
+  .marquee-content span:nth-child(1) {
+    animation-delay: 0s; /* First span starts immediately */
+  }
+  
+  .marquee-content span:nth-child(2) {
+    animation-delay: 4s; /* Second span starts after the first span has fully exited */
+  }
+  
+  .marquee-content span:nth-child(3) {
+    animation-delay: 8s; /* Third span starts after the second span has fully exited */
+  }

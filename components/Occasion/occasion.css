@@ -1,0 +1,52 @@
+/* Base Styles */
+.occasion-container {
+    padding: 15px;
+    text-align: center;
+    background-color: #ffffff; /* Light background */
+  }
+  
+  .occasion-container h2 {
+    font-size: 1.9em;
+    margin-bottom: 20px;
+    color: #163026; /* Deep Charcoal */
+  }
+  
+  .grid-occasions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+    gap: 10px; /* Space between grid items */
+  }
+  
+  
+  .occasion-image {
+    width: 167px; /* Fixed size for images */
+    height: 167px;
+    object-fit: contain; /* Ensure images fit well */
+  }
+  
+  .occasion-title {
+    font-size: 1.15em;
+    margin-top: 5px;
+    text-transform: uppercase;
+    color: #34C759; /* Sea Green */
+  }
+  
+  /* Responsive Styles for Larger Screens */
+  @media (min-width: 768px) {
+    .occasion-container h2 {
+      font-size: 2em; /* Larger heading on bigger screens */
+    }
+  
+    .grid-occasions {
+      grid-template-columns: repeat(4, 1fr); /* 4-column grid on larger screens */
+    }
+  
+    .occasion-image {
+      width: 100px; /* Slightly larger images */
+      height: 100px;
+    }
+  
+    .occasion-title {
+      font-size: 1.2em; /* Larger text */
+    }
+  }

@@ -1,0 +1,96 @@
+/* Base Styles */
+.order-steps-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #c6ebea6c; /* Light background */
+}
+
+.heading h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333333; /* Deep Charcoal */
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Space between steps */
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Text in column 1, icon in column 2 */
+  align-items: center;
+  gap: 0px; /* Space between text and icon */
+  text-align: left; /* Align text to the left */
+}
+
+.step-numbering {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px; /* Circle size */
+  height: 35px; /* Circle size */
+  background-color: #a8ebe8; /* Sea Green */
+  color: #ffffff; /* White text */
+  border-radius: 50%; /* Makes it a circle */
+  font-size: 1.15em;
+  font-weight: bold;
+  margin-right: 10px; /* Space between number and title */
+}
+
+.step h4 {
+  font-size: 1.2em;
+  margin-left: 2px;
+  color: #333333; /* Deep Charcoal */
+  display: inline-flex; /* Ensure number and title are on the same line */
+  align-items: center;
+}
+
+.step p {
+  font-size: 1em;
+  color: #666666; /* Light Gray */
+  margin: 0px 0px 0 55px; /* Space above the paragraph */
+  width: 230px;
+  line-height: 1.8em;
+}
+
+.step img {
+  margin-right: 15px;
+  width: 52px;
+  height: 52px;
+}
+
+/* Responsive Styles for Larger Screens */
+@media (min-width: 768px) {
+  .steps {
+    flex-direction: row; /* Horizontal layout on larger screens */
+    justify-content: space-between;
+    gap: 20px; /* Space between steps */
+  }
+
+  .step {
+    display: block; /* Revert to single column for desktop */
+    text-align: center; /* Center align text */
+  }
+
+  .step-numbering {
+    margin-bottom: 20px; /* Space below the number */
+  }
+
+  .step img {
+    margin-top: 20px; /* Space above the icon */
+  }
+
+  .heading h2 {
+    font-size: 2.2em; /* Larger heading on bigger screens */
+  }
+
+  .step h4 {
+    font-size: 1.4em; /* Larger text */
+  }
+
+  .step p {
+    font-size: 1.1em; /* Larger text */
+  }
+}

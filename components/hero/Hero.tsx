@@ -12,13 +12,13 @@ export default function Hero() {
                     src='/hero6.jpg'
                     alt='hero image'
                     width={430}
-                    height={650}
+                    height={600}
                     className='hero-img'
                 />
             </div>    
             {/*text & btn higher z-index place on the image */}
             <div className='hero-caption'>
-                {/* <h2>Indulge in Sweetness</h2> */}
+                <h2>Indulge in Layers of Happiness</h2>
             </div>
 
             <div className='shop-btn'>
