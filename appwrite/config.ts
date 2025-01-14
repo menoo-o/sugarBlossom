@@ -12,7 +12,8 @@ const storage = new Storage(client);
 
 // Your database, collection, and bucket IDs
 const databaseId = '6780c3a1003873410f5b';
-const collectionId = '6780c3b8001880f676ae';
+const collectionId = '6784df9b0037f1ce3bfe';
 const bucketId = '677e6d21000acd65983c';
+const birthdayCollectionId= '67863025002bfc152318'
 
-export { databases, storage, databaseId, collectionId, bucketId };
+export { databases, storage, databaseId, collectionId, bucketId, birthdayCollectionId };

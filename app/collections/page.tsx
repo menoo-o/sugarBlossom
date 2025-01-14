@@ -1,66 +1,46 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
-
+import Link from 'next/link';
 interface Product {
   id: string;
   name: string;
-  price: string;
-  description: string;
   imageUrl: string;
 }
 
-export default function Collections() {
+export default async function Collections() {
+  // Fetch data at build time (SSG)
+  const response = await fetch('http://localhost:3000/api/getCollections', {
+    cache: 'force-cache', // Ensures SSG behavior
+    next: { revalidate: 3600 }, // Optional: Revalidate every hour (ISR)
+  });
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  if (!response.ok) {
+    throw new Error('Failed to fetch products');
+  }
 
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await fetch('/api/getCollections');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data = await response.json();
-        setProducts(data.products);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProducts();
-  }, []);
-
-  if (loading) return <p>Loading products...</p>;
+  const { products } = await response.json();
 
   return (
     <div>
-      <h1>Shop</h1>
+      <h1>Collections</h1>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-        {products.map((product) => (
-
+        {products.map((product: Product) => (
           <div key={product.id} style={{ border: '1px solid #ddd', padding: '16px' }}>
-
-            <Image 
-               priority
-               src={product.imageUrl}
-               alt={product.name}
-               id={product.id}
-               width={200}
-               height= {300}
-
-            />
-
+            <Link href={`/collections/${product.name}`}>
+              <Image
+                priority
+                src={product.imageUrl}
+                alt={product.name}
+                id={product.id}
+                width={200}
+                height={300}
+              />
+            </Link>            
+            
             <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>Price: {product.price}</p>
+           
           </div>
         ))}
+
       </div>
     </div>
   );
