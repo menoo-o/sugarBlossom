@@ -5,9 +5,10 @@ import './single.css'
 interface SingleOccasionProps {
   img: string;
   title: string;
+  price ? : number;
 }
 
-export default function SingleOccasion({ img, title }: SingleOccasionProps) {
+export default function SingleOccasion({ img, title, price }: SingleOccasionProps) {
   return (
     <div className="single-occasion">
       <Image
@@ -18,6 +19,7 @@ export default function SingleOccasion({ img, title }: SingleOccasionProps) {
         className="occasion-image"
       />
       <h3 className="occasion-title">{title}</h3>
+      <h4 className="occasion-price">Price from: {price}</h4>
     </div>
   );
 }

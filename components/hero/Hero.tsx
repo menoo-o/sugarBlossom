@@ -9,7 +9,7 @@ export default function Hero() {
         <section className='hero-container'>
             <div className='hero-img'>
                 <Image  
-                    src='/hero6.jpg'
+                    src='/herov8.jpg'
                     alt='hero image'
                     width={430}
                     height={600}

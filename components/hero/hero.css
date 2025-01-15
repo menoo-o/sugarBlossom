@@ -10,7 +10,7 @@
   
   .hero-img {
     width: 100%; /* Make image responsive */
-    height: 550px;
+    height: 355px;
   }
   
 
@@ -33,6 +33,7 @@
     font-weight: 600;
     margin: 0;
     text-align: center;
+    display: none;
   }
   
   .shop-btn {
@@ -41,6 +42,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+    display: none;
   }
 
  /* Base Button Styles */
@@ -93,11 +95,12 @@
   /* Media Query: Tablets and Up */
   @media (min-width: 768px) {
     .hero-container {
-      padding: 40px;
+      padding: 0px;
     }
   
     .hero-caption h2 {
       font-size: 2.4rem;
+      
     }
   
     .shop-now {
@@ -115,7 +118,8 @@
   
     .hero-img {
       flex: 1;
-      max-width: 90%;
+      width: 100%;
+      height: 480px;
     }
   
     .hero-caption {

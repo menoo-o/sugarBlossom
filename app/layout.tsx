@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
+import Marquee from "@/components/marquee/Marquee";
 
 export const metadata: Metadata = {
   title: "Sugar Blossom",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Marquee />
         <Navbar />
         {children}
       </body>

@@ -1,0 +1,39 @@
+.single-product-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .product-img {
+    text-align: center;
+  }
+  
+  .product-info {
+    text-align: center;
+  }
+  
+  .product-choosing {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .single-product-container {
+      flex-direction: row;
+    }
+  
+    .product-img {
+      flex: 1;
+    }
+  
+    .product-info {
+      flex: 1;
+      text-align: left;
+    }
+  
+    .product-choosing {
+      flex: 1;
+    }
+  }

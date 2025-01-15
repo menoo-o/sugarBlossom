@@ -17,6 +17,13 @@
   cursor: pointer;
 }
 
+.logo-img {
+  width: 80px; /* Default width for mobile screens */
+  height: auto; /* Maintain aspect ratio */
+  transform: scale(1.35); /* Default size */
+  transition: transform 0.3s ease-in-out; /* Smooth scaling effect */
+}
+
 
 
 

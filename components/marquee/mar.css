@@ -11,6 +11,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     height: 1.8em; /* Fixed height to show one line at a time */
+    z-index: 1001;
   }
   
   /* Marquee Content */
