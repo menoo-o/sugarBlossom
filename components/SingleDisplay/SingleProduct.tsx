@@ -1,24 +1,49 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
-import './single.css'
+import { useCartStore } from '@/cart'; // Import your Zustand store
 
 interface SingleProduct {
+  id: number; // Added `id` to identify the product
   name: string;
   imageUrl: string;
   price: number;
   description: string;
-  flavors?: string[]; // Changed to an array for multiple flavors
-  colorScheme?: string[]; // Changed to an array for multiple color schemes
+  flavors?: string[];
+  colorScheme?: string[];
 }
 
 export default function SingleProduct({
+  id,
   name,
   imageUrl,
   price,
   description,
-  flavors = [], // Default to an empty array
-  colorScheme = [], // Default to an empty array
+  flavors = [],
+  colorScheme = [],
 }: SingleProduct) {
+  const [quantity, setQuantity] = useState(1); // State for quantity input
+  const { addItem } = useCartStore(); // Zustand store methods
+
+  // Handle adding to cart with the selected quantity
+  const handleAddToCart = () => {
+    const product = { id, name, price }; // Create a product object
+    for (let i = 0; i < quantity; i++) {
+      addItem(product); // Add the product `quantity` times
+    }
+  };
+
+  // Handle increasing quantity
+  const handleIncreaseQuantity = () => {
+    setQuantity((prev) => (prev < 10 ? prev + 1 : prev)); // Limit to max 10
+  };
+
+  // Handle decreasing quantity
+  const handleDecreaseQuantity = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : prev)); // Limit to min 1
+  };
+
   return (
     <section className="single-product-container">
       {/* Product Image */}
@@ -26,17 +51,17 @@ export default function SingleProduct({
         <Image
           src={imageUrl}
           alt={name}
-          width={300} // Increased size for better visibility
+          width={300}
           height={300}
           className="product-image"
-          priority // Prioritize loading for better performance
+          priority
         />
       </div>
 
       {/* Product Information */}
       <div className="product-info">
         <h2>{name}</h2>
-        <h4>From: ${price.toFixed(2)}</h4> {/* Format price to 2 decimal places */}
+        <h4>From: ${price.toFixed(2)}</h4>
         <p>{description}</p>
       </div>
 
@@ -75,6 +100,25 @@ export default function SingleProduct({
             ))}
           </select>
         </div>
+      </div>
+
+      {/* Add to Cart Section */}
+      <div className="cart">
+        <div className="qty">
+          <button onClick={handleDecreaseQuantity}>-</button>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            max="10"
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+          />
+          <button onClick={handleIncreaseQuantity}>+</button>
+        </div>
+
+        <button onClick={handleAddToCart}>Add to Cart</button>
       </div>
     </section>
   );

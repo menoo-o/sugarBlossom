@@ -45,7 +45,7 @@ export default async function BirthdayPage() {
 
           <div className="birthday-cakes-imgs-container">
               {products.map((birthday:Cakes)=>(
-                <Link href='/collections/birthday/cakes' key={birthday.id}>
+                <Link href={`/collections/birthday/${birthday.name}`} key={birthday.id}>
                   <SingleOccasion
                     img={birthday.imageUrl}
                     title={birthday.name}
