@@ -1,14 +1,13 @@
-'use client'
+'use client';
 
 import React from 'react';
-import { useCartStore } from '@/cart';
-
-
+import Link from 'next/link';
+import { useCartStore } from '@/cart'; // Import your Zustand store
 
 const Cart: React.FC = () => {
   const products = useCartStore((state) => state.products);
-  const addItems = useCartStore((state) => state.addItems);
-  const delItems = useCartStore((state) => state.delItems);
+  const addItem = useCartStore((state) => state.addItem);
+  const removeItem = useCartStore((state) => state.removeItem);
   const total = useCartStore((state) => state.total());
   const hydrated = useCartStore((state) => state.hydrated);
 
@@ -17,48 +16,36 @@ const Cart: React.FC = () => {
     return <p>Loading...</p>;
   }
 
-
   return (
-    <div >
-      <h1 >Shopping Cart</h1>
+    <div>
+      <h1>Shopping Cart</h1>
 
-
-
-      {/* Render the cart items if items exists in the cart */}
+      {/* Render the cart items if items exist in the cart */}
       {products.length > 0 ? (
         <ul>
           {products.map((product) => (
-            <li key={product.id} >
+            <li key={product.id}>
               <div>
-                <p >{product.name}</p>
-                <p>Price: ${product.price}</p>
+                <p>{product.name}</p>
+                <p>Price: ${product.price.toFixed(2)}</p>
                 <p>Quantity: {product.quantity}</p>
               </div>
 
               <div>
-                <button
-                  onClick={() => addItems(product.id)} >
-                  +
-                </button>
-
-                <button
-                  onClick={() => delItems(product.id)}>
-                  Remove
-                </button>
-
+                <button onClick={() => addItem(product)}>+</button>
+                <button onClick={() => removeItem(product.id)}>Remove</button>
               </div>
             </li>
           ))}
-
         </ul>
       ) : (
         <p>Your cart is empty.</p>
       )}
 
       {/* Display the total */}
-      <div>
-        Total: ${total}
-      </div>
+      <div>Total: ${total.toFixed(2)}</div>
+
+      <br /> <Link href='/single'>back to shopping</Link>
     </div>
   );
 };

@@ -7,9 +7,9 @@ import { useCartStore } from '@/cart'; // Import your Zustand store
 interface SingleProduct {
   id: number; // Added `id` to identify the product
   name: string;
-  imageUrl: string;
+  imageUrl?: string;
   price: number;
-  description: string;
+  description?: string;
   flavors?: string[];
   colorScheme?: string[];
 }

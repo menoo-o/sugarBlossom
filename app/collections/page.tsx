@@ -10,7 +10,7 @@ export default async function Collections() {
   // Fetch data at build time (SSG)
   const response = await fetch('http://localhost:3000/api/getCollections', {
     cache: 'force-cache', // Ensures SSG behavior
-    next: { revalidate: 3600 }, // Optional: Revalidate every hour (ISR)
+    // next: { revalidate: 3600 }, // Optional: Revalidate every hour (ISR)
   });
 
   if (!response.ok) {

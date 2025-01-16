@@ -14,7 +14,7 @@ export default async function BirthdayPage() {
    // Fetch data at build time (SSG)
    const response = await fetch('http://localhost:3000/api/getBirthdayCakes', {
     cache: 'force-cache', // Ensures SSG behavior
-    next: { revalidate: 3600 }, // Optional: Revalidate every hour (ISR)
+    // next: { revalidate: 3600 }, // Optional: Revalidate every hour (ISR)
   });
 
   if(!response.ok){
@@ -55,15 +55,7 @@ export default async function BirthdayPage() {
               ))}
           </div>
 
-          
-          {/* <ul>
-
-
-            <li><a href="/collections/birthday/chocolate-cake">Chocolate Cake</a></li>
-            <li><a href="/collections/birthday/vanilla-cake">Vanilla Cake</a></li>
-            <li><a href="/collections/birthday/red-velvet-cake">Red Velvet Cake</a></li>
-          </ul> */}
-
+    
         </section>
         
       </>
