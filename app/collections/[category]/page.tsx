@@ -1,9 +1,10 @@
 // app/collections/[category]/page.tsx
 import Link from "next/link";
+import Image from "next/image";
 
 
-export default async function CategoryPage({ params }: { params: { category: string } }) {
-    const { category } = params;
+export default async function CategoryPage({ params }: { params: Promise <{ category: string }> }) {
+    const { category } = await params;
 
     try {
         // Fetch products for the category from the API
@@ -17,22 +18,26 @@ export default async function CategoryPage({ params }: { params: { category: str
         const { products } = data;
 
         return (
-            <div>
+            <div className="category-container">
                 <h1>{category} Cakes</h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="product-container">
                     {products.map((product: any) => (
-                        <div key={product.id} className="border p-4 rounded-lg shadow-md">
-                            <img
+                        <div key={product.id} className="product card">
+                            <Image 
                                 src={product.imageUrl}
                                 alt={product.name}
-                                className="w-full h-48 object-cover rounded-t-lg"
+                                className="product-img"
+                                width={200}
+                                height={200}
                             />
-                            <h2 className="text-xl font-semibold mt-2">{product.name}</h2>
-                            <p className="text-gray-600">{product.description}</p>
-                            <p className="text-lg font-bold mt-2">${product.price}</p>
+                            
+                            <h2 className="product-name">{product.name}</h2>
+                            <p className="product-descrip">{product.description}</p>
+                            <p className="product-price">${product.price}</p>
+
                             <Link
-                                href={`/collections/${category}/products/${product.id}`}
-                                className="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                               href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
+                                className="product-single-display-link"
                             >
                                 View Details
                             </Link>

@@ -1,5 +1,6 @@
 // app/collections/page.tsx
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default async function CollectionsPage() {
     try {
@@ -16,18 +17,22 @@ export default async function CollectionsPage() {
         return (
             <div>
                 <h1>Collections</h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="collections-container">
                     {collections.map((collection: any) => (
-                        <div key={collection.id} className="border p-4 rounded-lg shadow-md">
-                            <img
+                        <div key={collection.id} className="collection-card">
+                            <Image  
                                 src={collection.imageUrl}
                                 alt={collection.name}
-                                className="w-full h-48 object-cover rounded-t-lg"
+                                width={100}
+                                height={100}
+                                className='collection-img'
                             />
-                            <h2 className="text-xl font-semibold mt-2">{collection.name}</h2>
+                           
+                            <h2 className="collection-name">{collection.name}</h2>
+
                             <Link
-                                href={`/collections/${collection.id}`}
-                                className="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                                href={`/collections/${collection.name}`}
+                                className="collection-link"
                             >
                                 View Collection
                             </Link>
