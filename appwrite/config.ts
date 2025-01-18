@@ -15,5 +15,6 @@ const databaseId = '6780c3a1003873410f5b';
 const collectionId = '6784df9b0037f1ce3bfe';
 const bucketId = '677e6d21000acd65983c';
 const birthdayCollectionId= '67863025002bfc152318'
+const weddingCollectionId= '678b557d002bce970e50'
 
-export { databases, storage, databaseId, collectionId, bucketId, birthdayCollectionId };
+export { databases, storage, databaseId, collectionId, bucketId, birthdayCollectionId, weddingCollectionId };
