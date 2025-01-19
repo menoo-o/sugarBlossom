@@ -1,64 +1,97 @@
-import Link from "next/link";
-import Image from "next/image";
+'use client'; // Mark this component as a Client Component
 
-export default async function ProductPage({
-    params,
-}: {
-    params: Promise <{ category: string; productName: string }>; // Use `productName` instead of `productId`
-}) {
-    const { category, productName } = await params;
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import SingleProduct from '@/components/SingleDisplay/SingleProduct'; // Import the SingleProduct component
 
-    try {
-        // Log params for debugging
-        console.log('Params:', params);
+interface ProductPageParams {
+    category: string;
+    productName: string;
+}
 
-        // Construct the API URL
-        const apiUrl = `http://localhost:3000/api/collections/${category}/products/${productName}`;
-        console.log('API URL:', apiUrl);
+interface Product {
+    id: number;
+    name: string;
+    imageUrl: string;
+    description: string;
+    price: number;
+    flavors?: string[];
+    colorScheme?: string[];
+}
 
-        // Fetch product details from the API
-        const response = await fetch(apiUrl);
+interface ApiResponse {
+    product: Product;
+}
 
-        // Log API response for debugging
-        console.log('API Response:', response);
+export default function ProductPage({ params }: { params: Promise<ProductPageParams> }) {
+    const [resolvedParams, setResolvedParams] = useState<ProductPageParams | null>(null);
+    const [product, setProduct] = useState<Product | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-        // Check if the response is OK
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error('API Error:', errorData);
-            throw new Error(errorData.error || 'Failed to fetch product details');
-        }
+    useEffect(() => {
+        // Resolve the params Promise
+        params.then((resolved) => {
+            setResolvedParams(resolved);
+        }).catch((err) => {
+            console.error('Error resolving params:', err);
+            setError('Failed to resolve route parameters.');
+        });
+    }, [params]);
 
-        // Parse the JSON response
-        const data = await response.json();
-        console.log('API Data:', data);
+    useEffect(() => {
+        if (!resolvedParams) return;
 
-        const { product } = data;
+        const fetchProduct = async () => {
+            try {
+                const { category, productName } = resolvedParams;
+                const apiUrl = `http://localhost:3000/api/collections/${category}/products/${productName}`;
+                const response = await fetch(apiUrl);
 
-        // Handle missing product
-        if (!product) {
-            return <div>Product not found.</div>;
-        }
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to fetch product details');
+                }
 
-        return (
-            <div>
-                <h1>{product.name}</h1>
-                <Image 
-                    src={product.imageUrl}
-                   alt={product.name}
-                   className="product-img"
-                    width={200}
-                    height={200}
-                                            />
+                const data: ApiResponse = await response.json();
+                setProduct(data.product);
+            } catch (err) {
+                console.error('Error fetching product details:', err);
+                setError(err instanceof Error ? err.message : 'Failed to load product details.');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-                <p className="text-gray-600 mt-4">{product.description}</p>
-                <p className="text-lg font-bold mt-2">${product.price}</p>
+        fetchProduct();
+    }, [resolvedParams]);
 
-                <Link href='/collections'>back to collections</Link>
-            </div>
-        );
-    } catch (error) {
-        console.error('Error fetching product details:', error);
-        return <div>Failed to load product details. Please try again later.</div>;
+    if (loading) {
+        return <div>Loading...</div>;
     }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
+    if (!product) {
+        return <div>Product not found.</div>;
+    }
+
+    return (
+        <div>
+            <SingleProduct
+                id={product.id}
+                name={product.name}
+                imageUrl={product.imageUrl}
+                price={product.price}
+                description={product.description}
+                flavors={product.flavors}
+                colorScheme={product.colorScheme}
+            />
+            <Link href='/collections' className="text-blue-500 hover:underline">
+                Back to Collections
+            </Link>
+        </div>
+    );
 }
