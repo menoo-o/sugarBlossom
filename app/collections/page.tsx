@@ -1,11 +1,15 @@
 // app/collections/page.tsx
 import Link from 'next/link';
 import Image from 'next/image';
+import './collection.css'
 
 export default async function CollectionsPage() {
     try {
         // Fetch collections from the API
-        const response = await fetch('http://localhost:3000/api/collections');
+        const response = await fetch('http://localhost:3000/api/collections', {
+            cache: 'force-cache', // Ensures SSG behavior
+            next: { revalidate: 3 },
+        });
         const data = await response.json();
 
         if (!response.ok) {

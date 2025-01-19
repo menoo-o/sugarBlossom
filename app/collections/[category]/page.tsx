@@ -8,8 +8,15 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
 
     try {
         // Fetch products for the category from the API
-        const response = await fetch(`http://localhost:3000/api/collections/${category}`);
+        const response = await fetch(`http://localhost:3000/api/collections/${category}`, 
+            //SSG behavior
+            // {
+        //     cache: 'force-cache',
+        //     next: { revalidate: 3 },
+        // }
+    );
         const data = await response.json();
+        console.log(data)
 
         if (!response.ok) {
             throw new Error(data.error || 'Failed to fetch products');
@@ -19,7 +26,7 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
 
         return (
             <div className="category-container">
-                <h1>{category} Cakes</h1>
+                <h1>{category}</h1>
                 <div className="product-container">
                     {products.map((product: any) => (
                         <div key={product.id} className="product card">

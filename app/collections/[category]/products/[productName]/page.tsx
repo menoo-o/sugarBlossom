@@ -1,3 +1,6 @@
+import Link from "next/link";
+import Image from "next/image";
+
 export default async function ProductPage({
     params,
 }: {
@@ -40,13 +43,18 @@ export default async function ProductPage({
         return (
             <div>
                 <h1>{product.name}</h1>
-                <img
+                <Image 
                     src={product.imageUrl}
-                    alt={product.name}
-                    className="w-full h-64 object-cover rounded-lg"
-                />
+                   alt={product.name}
+                   className="product-img"
+                    width={200}
+                    height={200}
+                                            />
+
                 <p className="text-gray-600 mt-4">{product.description}</p>
                 <p className="text-lg font-bold mt-2">${product.price}</p>
+
+                <Link href='/collections'>back to collections</Link>
             </div>
         );
     } catch (error) {
