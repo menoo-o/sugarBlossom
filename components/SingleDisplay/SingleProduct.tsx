@@ -10,8 +10,6 @@ interface SingleProduct {
   imageUrl?: string;
   price: number;
   description?: string;
-  flavors?: string[];
-  colorScheme?: string[];
 }
 
 export default function SingleProduct({
@@ -20,9 +18,8 @@ export default function SingleProduct({
   imageUrl,
   price,
   description,
-  flavors = [],
-  colorScheme = [],
 }: SingleProduct) {
+
   const [quantity, setQuantity] = useState(1); // State for quantity input
   const { addItem } = useCartStore(); // Zustand store methods
 
@@ -45,6 +42,7 @@ export default function SingleProduct({
   };
 
   return (
+    
     <section className="single-product-container">
       {/* Product Image */}
       <div className="product-img">
@@ -78,7 +76,7 @@ export default function SingleProduct({
         </div>
 
         {/* Flavor Selection */}
-        <div className="flavors">
+        {/* <div className="flavors">
           <h3>Flavors:</h3>
           <select>
             {flavors.map((flavor, index) => (
@@ -87,10 +85,10 @@ export default function SingleProduct({
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         {/* Color Scheme Selection */}
-        <div className="color-scheme">
+        {/* <div className="color-scheme">
           <h3>Color Scheme:</h3>
           <select>
             {colorScheme.map((color, index) => (
@@ -99,7 +97,7 @@ export default function SingleProduct({
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
       </div>
 
       {/* Add to Cart Section */}
