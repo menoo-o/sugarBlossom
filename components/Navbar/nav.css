@@ -3,10 +3,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  margin-top: 1.8em ;
   width: 100%;
+
   background-color: #fff;
   padding: 1rem;
+  
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
@@ -16,6 +17,128 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Fixed height */
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #fff;
+}
+/* Menu Items */
+.menu-item {
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+
+/* Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.menu-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Transitions */
+.menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.menu-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.menu-primary-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.menu-primary-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.menu-primary-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-primary-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.menu-secondary-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.menu-secondary-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.menu-secondary-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-secondary-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
 /* Menu Overlay */
@@ -38,6 +161,7 @@
   background-color: #fff;
   padding: 1rem;
   overflow-y: auto;
+  z-index: 1000;
 }
 
 /* Menu Items */
@@ -54,57 +178,47 @@
 
 /* Transitions */
 .menu-enter {
-  transform: translateX(-100%);
+  opacity: 0;
+  transform: translateX(100%);
 }
 
 .menu-enter-active {
+  opacity: 1;
   transform: translateX(0);
-  transition: transform 300ms ease;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
 .menu-exit {
+  opacity: 1;
   transform: translateX(0);
 }
 
 .menu-exit-active {
+  opacity: 0;
   transform: translateX(-100%);
-  transition: transform 300ms ease;
-}
-
-.menu-primary-enter {
-  transform: translateX(-100%);
-}
-
-.menu-primary-enter-active {
-  transform: translateX(0);
-  transition: transform 300ms ease;
-}
-
-.menu-primary-exit {
-  transform: translateX(0);
-}
-
-.menu-primary-exit-active {
-  transform: translateX(-100%);
-  transition: transform 300ms ease;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
 .menu-secondary-enter {
+  opacity: 0;
   transform: translateX(100%);
 }
 
 .menu-secondary-enter-active {
+  opacity: 1;
   transform: translateX(0);
-  transition: transform 300ms ease;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
 .menu-secondary-exit {
+  opacity: 1;
   transform: translateX(0);
 }
 
 .menu-secondary-exit-active {
+  opacity: 0;
   transform: translateX(100%);
-  transition: transform 300ms ease;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
 /* Menu Overlay */
@@ -127,59 +241,109 @@
   background-color: #fff;
   padding: 1rem;
   overflow-y: auto;
+  z-index: 1000;
 }
 
-/* Transitions */
-.menu-enter {
-  transform: translateX(-100%);
+/* Menu Items */
+.menu-item {
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
 }
 
-.menu-enter-active {
-  transform: translateX(0);
-  transition: transform 300ms ease;
+.menu-item:hover {
+  background-color: #f5f5f5;
 }
 
-.menu-exit {
-  transform: translateX(0);
-}
-
-.menu-exit-active {
-  transform: translateX(-100%);
-  transition: transform 300ms ease;
-}
-
+/* Transitions for Main Menu */
 .menu-primary-enter {
+  opacity: 0;
   transform: translateX(-100%);
 }
 
 .menu-primary-enter-active {
+  opacity: 1;
   transform: translateX(0);
-  transition: transform 300ms ease;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
 .menu-primary-exit {
+  opacity: 1;
   transform: translateX(0);
 }
 
 .menu-primary-exit-active {
+  opacity: 0;
   transform: translateX(-100%);
-  transition: transform 300ms ease;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
+/* Transitions for Nested Menus */
 .menu-secondary-enter {
-  transform: translateX(100%);
+  opacity: 0;
+  transform: translateX(100%); /* Slide in from the right */
 }
 
 .menu-secondary-enter-active {
+  opacity: 1;
   transform: translateX(0);
-  transition: transform 300ms ease;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
 .menu-secondary-exit {
+  opacity: 1;
   transform: translateX(0);
 }
 
 .menu-secondary-exit-active {
+  opacity: 0;
+  transform: translateX(-100%); /* Slide out to the left */
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+/* Transitions for Main Menu */
+.menu-primary-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.menu-primary-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-primary-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-primary-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Transitions for Nested Menus */
+.menu-secondary-enter {
+  opacity: 0;
   transform: translateX(100%);
-  transition: transform 300ms ease;
+}
+
+.menu-secondary-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-secondary-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-secondary-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }

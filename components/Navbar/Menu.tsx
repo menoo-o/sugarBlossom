@@ -1,6 +1,3 @@
-
-import './nav.css'
-
 import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import DropdownMenu from './DropdownMenu';
@@ -17,14 +14,17 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
   return (
     <CSSTransition
       in={isOpen}
-      timeout={400}
+      timeout={300}
       classNames="menu"
       unmountOnExit
       nodeRef={menuRef} // Pass the ref here
     >
       <div className="menu-overlay" ref={menuRef}>
         <div className="menu-content">
-         <DropdownMenu onClose={onClose} />
+          <button className="close-btn" onClick={onClose}>
+            X
+          </button>
+          <DropdownMenu />
         </div>
       </div>
     </CSSTransition>
