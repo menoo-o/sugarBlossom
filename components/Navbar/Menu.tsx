@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import DropdownMenu from './DropdownMenu';
 import './nav.css'
+import Image from 'next/image';
 
 interface MenuProps {
   isOpen: boolean;
@@ -22,7 +23,12 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
       <div className="menu-overlay" ref={menuRef}>
         <div className="menu-content">
           <button className="close-btn" onClick={onClose}>
-            X
+            <Image 
+              src='/icons/close.svg'
+              alt='close button'
+              width={25}
+              height={25}
+            />
           </button>
           <DropdownMenu />
         </div>

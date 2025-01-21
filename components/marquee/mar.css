@@ -1,17 +1,18 @@
 /* Marquee Container */
 .marquee-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     overflow: hidden; /* Hide overflowing content */
     white-space: nowrap; /* Keep text in a single line */
-    background-color: #34c75998; /* Sea Green background */
-    color: #FFFFFF; /* White text */
+    background-color: #f09e9a; /* Sea Green background */
+    color: #F7D9D1  ; /* White text */
     padding: 10px 0;
-    font-size: 1.15em;
+    font-size: 1em;
     font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    height: 1.8em; /* Fixed height to show one line at a time */
-    z-index: 1001;
+    height: 1.85em; /* Fixed height to show one line at a time */
+    z-index: 2001;
   }
   
   /* Marquee Content */

@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <Marquee /> */}
+        <Marquee />
         <Navbar />
         {children}
       </body>

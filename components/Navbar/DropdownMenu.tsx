@@ -22,6 +22,7 @@ const DropdownMenu: React.FC = () => {
 
   return (
     <div className="dropdown-menu">
+
       {/* Main Menu */}
       <CSSTransition
         in={activeMenu === 'main'}
@@ -31,7 +32,7 @@ const DropdownMenu: React.FC = () => {
         nodeRef={mainMenuRef}
       >
         <div className="menu" ref={mainMenuRef}>
-          <h2>Menu</h2>
+          <h2 className='account'>Account</h2>
           <ul>
             <MenuItem onClick={() => setActiveMenu('cakes')}>Cakes</MenuItem>
             <MenuItem onClick={() => setActiveMenu('cupcakes')}>Cupcakes</MenuItem>
