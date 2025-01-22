@@ -1,0 +1,45 @@
+/* Custom Container */
+.custom-container {
+    padding: 40px 20px;
+    background-color: #fff5f5; /* Light coral pink background */
+    text-align: center;
+    border-radius: 15px;
+    margin: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Custom Text */
+  .custom-text h2 {
+    font-size: 2rem; /* Large font size for the heading */
+    font-weight: bold;
+    color: #ff6f61; /* Coral pink for emphasis */
+    margin-bottom: 15px;
+  }
+  
+  .custom-text h4 {
+    font-size: 1.2rem; /* Medium font size for the subheading */
+    color: #555; /* Darker text for readability */
+    margin-bottom: 20px;
+  }
+  
+  /* Custom Link */
+  .link-custom {
+    margin-top: 20px;
+  }
+  
+  .link-custom a {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white; /* White text for contrast */
+    background-color: #3bb4a5; /* Sea green for the button */
+    border-radius: 50px; /* Rounded button shape */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .link-custom a:hover {
+    background-color: #2a9d8f; /* Darker sea green on hover */
+    transform: translateY(-3px); /* Lift button on hover */
+  }

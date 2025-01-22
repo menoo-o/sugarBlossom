@@ -1,0 +1,55 @@
+/* Offering Container */
+.offering-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .offering-container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Offering Mapping */
+  .offering-mapping {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Single Occasion Item */
+  .single-occasion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .single-occasion img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .single-occasion h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  /* Styles applied via className */
+  .single {
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .single:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }

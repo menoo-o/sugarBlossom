@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Suranna&display=swap');
 
+:root{
+  --primary-color: #ff686b;
+  --secondary-color: #ffa69e;
+  --text-color: #a5ffd6;
+  --heading: #84dcc6;
+  --bg-color: #ffffff;
+}
+
 *{
   margin: 0; padding: 0; box-sizing: border-box;
 }
@@ -8,5 +16,5 @@ body{
   font-family: "Suranna", serif;
   font-weight: 400;
   height: 100vh;
-
+  background-color: var(--bg-color);
 }

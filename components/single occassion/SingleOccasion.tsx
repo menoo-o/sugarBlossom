@@ -6,20 +6,20 @@ interface SingleOccasionProps {
   img: string;
   title: string;
   price ? : number;
+  className?: string;
 }
 
-export default function SingleOccasion({ img, title, price }: SingleOccasionProps) {
+export default function SingleOccasion({ img, title, price, className }: SingleOccasionProps) {
   return (
-    <div className="single-occasion">
+    <div className={`single-occasion ${className}`}> {/* Apply the className */}
       <Image
         src={img}
         alt={title}
         width={100}
         height={100}
-        className="occasion-image"
       />
-      <h3 className="occasion-title">{title}</h3>
-      <h4 className="occasion-price">Price from: {price}</h4>
+      <h3>{title}</h3>
+      <h4>{price}</h4>
     </div>
   );
 }

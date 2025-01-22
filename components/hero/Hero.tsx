@@ -9,20 +9,29 @@ export default function Hero() {
         <section className='hero-container'>
             <div className='hero-img'>
                 <Image  
-                    src='/herov8.jpg'
+                    src='/herov11.jpg'
                     alt='hero image'
                     width={430}
-                    height={600}
+                    height={650}
                     className='hero-img'
                 />
+
             </div>    
             {/*text & btn higher z-index place on the image */}
             <div className='hero-caption'>
-                <h2>Indulge in Layers of Happiness</h2>
+                <h1>Elevate your celebrations with <br /><span>Sugar Blossom&#39;s</span><br /> premium cakes</h1>
             </div>
 
-            <div className='shop-btn'>
-                <Link href='/' className="btn btn-glass">SHOP NOW</Link>
+            <div className='links'>
+                <div className='link-baked-to-order'>
+                    <Link href='/' className="btn btn-glass">Baked To Order</Link>
+                    <p>Get it in 5 Days</p>
+                </div>
+                <div className='link-order-now'>
+                    <Link href='/' className="btn btn-glass order-now">Last Minute</Link>
+                    <p>Get it in 48 Hrs+</p>
+                </div>
+
             </div>
         </section> 
     </>

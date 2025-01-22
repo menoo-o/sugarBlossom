@@ -6,8 +6,9 @@
     width: 100%;
     overflow: hidden; /* Hide overflowing content */
     white-space: nowrap; /* Keep text in a single line */
-    background-color: #f09e9a; /* Sea Green background */
-    color: #F7D9D1  ; /* White text */
+    background-color: #f09e9a; /* 
+    /* color: #F7D9D1  ;  */
+    color: #F7D9D1;
     padding: 10px 0;
     font-size: 1em;
     font-weight: bold;
