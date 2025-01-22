@@ -1,0 +1,147 @@
+/* Footer Container */
+body{
+    margin-top: auto;
+}
+
+.footer-container {
+    background-color: #fff5f5; /* Light coral pink background */
+    padding: 20px;
+    text-align: center;
+    color: #333; /* Dark text color */
+    background: linear-gradient(45deg, #fff5f5, #ffebeb); /* Light coral pink gradient */
+    
+  }
+  
+  /* Social Links */
+  .social-links {
+    margin-bottom: 20px;
+  }
+  
+  .social-links h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6f61; /* Coral pink for emphasis */
+    margin-bottom: 10px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between icons */
+  }
+  
+  /* Feedback Container */
+  .feedback-container {
+    margin-bottom: 20px;
+  }
+  
+  .feedback-container h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6f61; /* Coral pink for emphasis */
+    margin-bottom: 10px;
+  }
+  
+  .feedback-container p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-container .email {
+    font-weight: bold;
+    color: #3bb4a5; /* Sea green for email */
+  }
+  
+  /* Collection Links */
+  .collection-links {
+    margin-bottom: 20px;
+  }
+  
+  .collection-links h3,
+  .more-info-links h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6f61; /* Coral pink for emphasis */
+    margin-bottom: 10px;
+  }
+  
+  .collection-links ul,
+  .more-info-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .collection-links li,
+  .more-info-links li {
+    margin-bottom: 8px;
+  }
+  
+  .collection-links a,
+  .more-info-links a {
+    text-decoration: none;
+    color: #333; /* Dark text color */
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .collection-links a:hover,
+  .more-info-links a:hover {
+    color: #3bb4a5; /* Sea green on hover */
+  }
+  
+  /* Copyright */
+  .copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555; /* Slightly darker text color */
+  }
+  
+  /* Desktop/Tablet Layout */
+  @media (min-width: 768px) {
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
+      gap: 20px;
+      text-align: left;
+      padding: 40px;
+    }
+  
+    .social-links,
+    .feedback-container,
+    .collection-links,
+    .more-info-links {
+      margin-bottom: 0;
+    }
+  
+    .copyright {
+      grid-column: 1 / -1; /* Span across all columns */
+      text-align: center;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .footer-container {
+      grid-template-columns: repeat(4, 1fr); /* Four columns */
+    }
+  }
+
+  .back-to-top {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .back-to-top button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #3bb4a5; /* Sea green */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-to-top button:hover {
+    background-color: #2a9d8f; /* Darker sea green */
+  }
