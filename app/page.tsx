@@ -4,6 +4,7 @@ import Occasion from '@/components/Occasion/Occassion'
 import Ordersteps from '@/components/orderingsteps/Ordersteps'
 import Offerings from '@/components/offerings/Offerings'
 import Custom from '@/components/customsection/Custom'
+import Slider from '@/components/sliderswiper/Slider'
 
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
       <Ordersteps />
       <Occasion />
       <Custom />
-      
+       <Slider />
     </>
   )
 }
