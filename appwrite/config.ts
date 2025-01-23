@@ -26,4 +26,9 @@ const accessoriesCollectionId= ''
 const customCollectionId = ''
 
 
+
+
+
+
+
 export { databases, storage, databaseId, collectionId, bucketId, customCollectionId, accessoriesCollectionId, cupcakesCollectionId, bentoCollectionId, birthdayCollectionId, weddingCollectionId };

@@ -1,11 +1,12 @@
-// import auth from "@/auth";
+import auth from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-// import auth from "@/utils/auth";
-
-export default async function Login() {
+export default async function Login () {
+    const user = await auth.getUser();
+    if (user) redirect("/dashboard");
     return (
         <div>
-            <form>
+            <form action={auth.createSession} id="login-form">
                 <h3>Login</h3>
                 <p>Enter your information to create an account</p>
                 <div>
@@ -14,7 +15,6 @@ export default async function Login() {
                         type="email"
                         name="email"
                         placeholder="Enter your email..."
-                        
                     />
                 </div>
                 <div>
@@ -23,7 +23,6 @@ export default async function Login() {
                         type="password"
                         name="password"
                         placeholder="Enter your password..."
-                        defaultValue="pass12345"
                     />
                 </div>
                 <div>
