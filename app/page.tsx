@@ -15,8 +15,8 @@ export default function Home() {
       <Offerings />
       <Ordersteps />
       <Occasion />
-      <Custom />
-       <Slider />
+      {/* <Custom /> */}
+       {/* <Slider /> */}
     </>
   )
 }

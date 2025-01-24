@@ -7,7 +7,7 @@
   height: 4.5em;
   margin-top: 1.86em;
   background-color: #ffffff;
-  padding: 1rem 0.5rem;
+  padding: 1rem 0rem;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
 }
 
 .logo {
-  width: 120px; /* Adjust as needed */
+  width: 6.56rem; /* Adjust as needed */
   height: 39px;
 }
 
@@ -26,7 +26,22 @@
 
 .cart-icon {
   position: relative;
-  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.search{
+  margin-top: 6px;
+}
+
+
+.cart-img{
+  margin-top: 5px;
+}
+
+.wishlist{
+  display: none;
 }
 
 .cart-counter {
@@ -47,6 +62,10 @@
   cursor: pointer;
 }
 
+.social-link-desktop{
+  display: none;
+}
+
 .close-btn {
   position: absolute;
   top: 6rem;
@@ -62,7 +81,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Fixed height */
+  height: 80vh; /* Fixed height */
   padding: 1rem;
   margin-top: 3rem;
   overflow-y: auto;
@@ -96,6 +115,9 @@
   transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 
+.nav-menu-desktop{
+  display: none;
+}
 
 
 /* Menu Overlay */
@@ -179,4 +201,61 @@
   opacity: 0;
   transform: translateX(-100%);
   transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+@media only screen and (min-width: 768px){
+    .navbar{
+      justify-content: space-between;
+      padding: 0px 3rem;
+      height: 4.75em;
+    }
+
+    .nav-menu-desktop{
+      position: absolute;
+      display: block;
+      background-color: #ffdbcc;
+      width: 100%;
+      height: 3.3em;
+      top: 4.9em;
+      left: 0;    
+    }
+  
+    .hamburger-btn{
+      display: none;
+    }
+
+    .cart-icon{
+      display: block;
+      display: flex;
+      gap: 1.56rem;
+    }
+
+    .cart-img{
+      margin-top: 0px;
+    }
+
+    .wishlist{
+      display: block;
+      margin-top: 3.5px;
+    }
+
+    .social-link-desktop{
+      display: flex;
+      gap: 1.56rem;
+      margin-top: 4px;
+    }
+
+    .logo {
+      width: 7.5rem; /* Adjust as needed */
+    }
+
+    .logo-img{
+      transform: scale(2);
+    }
+
+    .search{
+      margin-top: 1px;
+    }
+
 }

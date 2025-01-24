@@ -6,11 +6,15 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+   
+  
+
   }
   
   .hero-img {
     width: 100%; /* Make image responsive */
     height: 530px;
+    
   }
   
 /* Hero Container */
@@ -22,6 +26,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-top: 10em;
 }
 
 /* Hero Image */

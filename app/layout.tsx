@@ -17,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <Marquee />
-        <Navbar /> */}
+        <Marquee />
+        <Navbar />
         {children}
-        {/* <Footer /> */}
+       {/* <Footer />  */}
       </body>
     </html>
   );

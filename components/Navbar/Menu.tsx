@@ -21,8 +21,12 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
       nodeRef={menuRef} // Pass the ref here
     >
       <div className="menu-overlay" ref={menuRef}>
+
         <div className="menu-content">
+
+          {/* close btn */}
           <button className="close-btn" onClick={onClose}>
+
             <Image 
               src='/icons/close.svg'
               alt='close button'
@@ -30,8 +34,14 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
               height={25}
             />
           </button>
+
           <DropdownMenu />
+
         </div>
+      </div>
+
+      <div className='menu-overlay-desktop'>
+        <h2>this is the menu bar</h2>
       </div>
     </CSSTransition>
   );

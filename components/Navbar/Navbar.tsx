@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Menu from './Menu';
+import Link from 'next/link';
 import './nav.css'
 
 const Navbar: React.FC = () => {
@@ -19,6 +20,26 @@ const Navbar: React.FC = () => {
           />
       </button>
 
+      <div className='social-link-desktop'>
+          <Link href='https://www.facebook.com' target='_blank'>
+            <Image 
+              src='/icons/fb.svg'
+              alt='facebook'
+              width={25}
+              height={25}
+            />
+          </Link>
+
+          <Link href='https://www.instagram.com/sugarblossomcakess' target='_blank'>
+            <Image 
+              src='/icons/insta.svg'
+              alt='instagram'
+              width={25}
+              height={25}
+            />
+          </Link>
+      </div>
+
       {/* Logo */}
       <div className="logo">
         <Image
@@ -31,17 +52,44 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="cart-icon">
+          <Image 
+                src='/icons/search.svg'
+                alt='search'
+                height={31}
+                width={31}
+                className='search'
+
+              />
+
+
           <Image
             src="/icons/cart.svg"
             alt="Cart"
             width={32}
             height={32}
+            className='cart-img'
             />
-          <span className="cart-counter">3</span> {/* Replace with dynamic value */}
+            {/* cart counting */}
+          {/* <span className="cart-counter">3</span>  */}
+          <Image 
+            src='/icons/wishlist.svg'
+            alt='wishlist'
+            height={26}
+            width={26}
+            className='wishlist'
+
+          />
+
+      
       </div>
 
       {/* Menu */}
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+      <div className='nav-menu-desktop'>
+      
+      </div>  
+        
     </nav>
   );
 };
