@@ -33,6 +33,7 @@ const DropdownMenu: React.FC = () => {
       >
         <div className="menu" ref={mainMenuRef}>
           <h2 className='account'>Account</h2>
+
           <ul>
             <MenuItem onClick={() => setActiveMenu('cakes')}>Cakes</MenuItem>
             <MenuItem onClick={() => setActiveMenu('cupcakes')}>Cupcakes</MenuItem>
@@ -42,6 +43,7 @@ const DropdownMenu: React.FC = () => {
             <MenuItem onClick={() => setActiveMenu('things-to-know')}>Things to Know</MenuItem>
           </ul>
         </div>
+        
       </CSSTransition>
 
       {/* Cakes Menu */}

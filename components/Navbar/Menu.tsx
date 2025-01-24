@@ -39,10 +39,6 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
 
         </div>
       </div>
-
-      <div className='menu-overlay-desktop'>
-        <h2>this is the menu bar</h2>
-      </div>
     </CSSTransition>
   );
 };

@@ -4,6 +4,9 @@ import Image from 'next/image';
 import Menu from './Menu';
 import Link from 'next/link';
 import './nav.css'
+import Desktopdrop from './Desktopdrop';
+
+
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,7 +90,7 @@ const Navbar: React.FC = () => {
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       <div className='nav-menu-desktop'>
-      
+       <Desktopdrop/>
       </div>  
         
     </nav>
