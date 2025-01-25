@@ -12,7 +12,7 @@ export default function Hero() {
                     src='/herov11.jpg'
                     alt='hero image'
                     layout="fill" /* Covers entire container */
-                    priority /* Ensures faster loading */
+                    priority={true} /* Ensures faster loading */
                     className='hero-img'
                 />
 
@@ -28,7 +28,7 @@ export default function Hero() {
                     <p>Get it in 5 Days</p>
                 </div>
                 <div className='link-order-now'>
-                    <Link href='/' className="btn btn-glass order-now">Last Minute</Link>
+                    <Link href='/' className="btn btn-glass order-now">Last Minute Order</Link>
                     <p>Get it in 48 Hrs+</p>
                 </div>
 

@@ -11,12 +11,12 @@
 .hero-container {
   position: relative;
   width: 100%;
-  height: 550px;
+  max-height: 50rem;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 7.5em;
+  margin-top: 6.5em;
   flex-direction: column;
   bottom: 3em;
 }
@@ -73,32 +73,42 @@
   text-align: center;
 }
 
+
 .btn-glass {
   display: inline-block;
+  padding: 0.65rem 0.7rem;
+  border-radius: 25px;
   text-decoration: none;
+  font-family: "Cormorant", serif;
+  letter-spacing: 0.2cap;
   text-transform: uppercase;
-  padding: 6px 20px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: var(--bg-color);
-  background-color: var(--secondary-color);
-  border: 2px solid white;
-  
-  border-radius: 50px; /* Rounded button shape */
-
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #0a3615;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.order-now{
-  background-color: var(--primary-color);
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 1); /* Solid white on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.order-now {
+  background: rgba(255, 111, 97, 0.8); /* Semi-transparent coral */
+  color: white; /* White text for better contrast */
+  border: 1px solid rgba(255, 111, 97, 0.3); /* Coral border */
 }
 
 
-/* Link Text */
-.links p {
-  margin-top: 0.3rem;
-  font-size: 0.95rem;
-  color: white;
-  font-weight: 700;
+.link-baked-to-order p, .link-order-now p {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #083328; /* Subtle text color for descriptions */
 }
 
 
@@ -113,15 +123,34 @@
     }
 
     .hero-caption h1{
-      font-size: 3.2rem;
+      letter-spacing: 0.2cap;
+      font-size: 3.1rem;
       line-height: 3cap;
     }
 
     .hero-caption span {
-        font-size: 4rem; /* Larger font size for the brand name */
-        text-shadow: 20px 20px 25px rgba(255, 166, 158, 0.933)
-      
+    letter-spacing: 0.3cap;
+    font-weight: bolder;
+    font-size: 5rem; /* Larger font size for the brand name */
+    text-shadow: 4px 4px 8px rgba(255, 166, 158, 0.5), 
+                 -4px -4px 8px rgba(255, 166, 158, 0.2),
+                 0 0 20px rgba(255, 166, 158, 0.6); /* Multi-layered text shadow for depth */
+    background: linear-gradient(90deg, #9e160d, #c55d54, #9e160d); /* Repeating gradient for a dynamic effect */
+    background-size: 200% 100%; /* Extend the gradient for animation */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s linear infinite; /* Smooth gradient animation */
+    display: inline-block; /* Ensures the gradient and animation work properly */
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 100% 0; /* Start gradient from the right */
     }
+    100% {
+        background-position: -100% 0; /* Move gradient to the left */
+    }
+}
 
     .hero-img {
       position: absolute;
@@ -133,6 +162,31 @@
       object-position: center; /* Center the focal point */
       z-index: -1; /* Ensure it stays behind content */
     }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem; /* Space between buttons */
+      margin-top: 2rem;
+  }
+  
+  .link-baked-to-order, .link-order-now {
+      text-align: center;
+  }
+  
+
+  .btn-glass:hover {
+      background: rgba(255, 255, 255, 1); /* Solid white on hover */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+      transform: translateY(-2px); /* Slight lift effect */
+  }
+
+  .btn-glass {
+    font-size: 0.85rem;
+    padding: 0.7rem 0.85rem;
+  }
+  
+
     
 
     

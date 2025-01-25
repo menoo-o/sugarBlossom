@@ -271,6 +271,7 @@
       height: 2.9em;
       position: relative;
       z-index: 1000;
+      color: #156d6d;
 
     }
 
@@ -290,6 +291,7 @@
       padding: 2rem 10rem;
       display: flex;
       flex-direction: row;
+
   
 
     }
