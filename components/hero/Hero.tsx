@@ -11,8 +11,8 @@ export default function Hero() {
                 <Image  
                     src='/herov11.jpg'
                     alt='hero image'
-                    width={430}
-                    height={650}
+                    layout="fill" /* Covers entire container */
+                    priority /* Ensures faster loading */
                     className='hero-img'
                 />
 

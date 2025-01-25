@@ -1,15 +1,5 @@
 /* Base Styles */
-.hero-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-   
-  
 
-  }
   
   .hero-img {
     width: 100%; /* Make image responsive */
@@ -26,7 +16,9 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 10em;
+  margin-top: 7.5em;
+  flex-direction: column;
+  bottom: 3em;
 }
 
 /* Hero Image */
@@ -36,6 +28,8 @@
   left: 0;
   object-fit: cover; /* Ensures the image covers the entire container */
   z-index: 1; /* Place the image behind the text and buttons */
+  object-fit: cover; /* Maintain aspect ratio, fill container */
+  object-position: center; /* Center the focal point */
 }
 
 /* Hero Caption */
@@ -105,4 +99,45 @@
   font-size: 0.95rem;
   color: white;
   font-weight: 700;
+}
+
+
+
+
+/* desktop */
+@media only screen and (min-width: 768px) {
+    .hero-container{
+      bottom: 0em;
+      margin-top: 5.1em;
+
+    }
+
+    .hero-caption h1{
+      font-size: 3.2rem;
+      line-height: 3cap;
+    }
+
+    .hero-caption span {
+        font-size: 4rem; /* Larger font size for the brand name */
+        text-shadow: 20px 20px 25px rgba(255, 166, 158, 0.933)
+      
+    }
+
+    .hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Maintain aspect ratio, fill container */
+      object-position: center; /* Center the focal point */
+      z-index: -1; /* Ensure it stays behind content */
+    }
+    
+
+    
+
+    
+
+
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import MenuItem from './MenuItem';
 import './nav.css'
@@ -13,12 +13,28 @@ const Desktopdrop: React.FC = () => {
   const cakesMenuRef = useRef<HTMLDivElement>(null);
   const cupcakesMenuRef = useRef<HTMLDivElement>(null);
   const bentoCakesMenuRef = useRef<HTMLDivElement>(null);
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+    // Click outside handler
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+          setActiveMenu('main'); // Return to the main menu when clicking outside
+        }
+      };
   
+      document.addEventListener('mousedown', handleClickOutside);
+  
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, []);
 
 
   return (
     <>
-        <div className='dropdown-desktop'>
+        <div className='dropdown-desktop'  ref={dropdownRef}>
         <CSSTransition
         in={activeMenu === 'main'}
         timeout={10}

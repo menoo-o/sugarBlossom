@@ -31,7 +31,7 @@ const DropdownMenu: React.FC = () => {
         unmountOnExit
         nodeRef={mainMenuRef}
       >
-        <div className="menu" ref={mainMenuRef}>
+        <div className="menu" ref={mainMenuRef} >
           <h2 className='account'>Account</h2>
 
           <ul>

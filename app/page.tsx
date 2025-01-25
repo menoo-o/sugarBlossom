@@ -12,11 +12,11 @@ export default function Home() {
     <>
      
       <Hero />
-      <Offerings />
+      {/* <Offerings />
       <Ordersteps />
-      <Occasion />
-      {/* <Custom /> */}
-       {/* <Slider /> */}
+      <Occasion /> 
+      <Custom />
+      <Slider /> */}
     </>
   )
 }
