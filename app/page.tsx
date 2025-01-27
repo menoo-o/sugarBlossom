@@ -21,40 +21,39 @@ export default async function Home() {
     if (!response.ok) {
       throw new Error(data.error || 'Failed to fetch hero image');
     }
-
+    
+   
+    
     const { hero } = data;
 
-    // Ensure hero data is available
-    if (!hero || hero.length === 0) {
+    // Ensure hero data is available and is an array
+    if (!hero || !Array.isArray(hero) || hero.length === 0 || !hero[0].fileId) {
       throw new Error('No hero data found');
     }
 
-    // Use the first hero image (adjust as needed)
+    // Use the first hero image
     const heroImage = hero[0];
+   
 
     // Render both Hero and Offerings
     return (
       <>
-        <Hero img={{ fileId: heroImage.fileId, alt: 'Hero Image' }} />
-        <Offerings />
+           {heroImage ? (
+          <Hero img={{ fileId: heroImage.fileId, alt: 'Hero Image' }} />
+        ) : (
+          <div>Failed to load hero image.</div>
+        )}
+   
+          <Offerings />
+          <Ordersteps />
+          <Occasion />
+          <Custom />
+          <Slider />
       </>
     );
   } catch (error) {
     console.error(error);
-
-    // Render error message along with Offerings
-    return (
-      <>
-        <div>Failed to load hero image.</div>
-        <Offerings />
-
-        <Ordersteps />
-        
-        <Occasion />
-        <Custom />
-        <Slider />
-
-      </>
-    );
+    // Fallback error handling
+    return <div>Failed to load data. Please try again later.</div>;
   }
 }

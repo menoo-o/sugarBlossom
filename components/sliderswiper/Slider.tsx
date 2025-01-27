@@ -6,65 +6,101 @@ import 'swiper/css/pagination';
 import './slider.css';
 import { Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 
 // Mock data for cake images
-const cakeImages = [
-  { id: 1, src: '/insta/snap1.jpg', alt: 'Cake 1' },
-  { id: 2, src: '/insta/snap2.jpg', alt: 'Cake 2' },
-  { id: 3, src: '/insta/snap3.jpg', alt: 'Cake 3' },
-  { id: 4, src: '/insta/snap4.jpg', alt: 'Cake 4' },
-  { id: 5, src: '/insta/snap5.jpg', alt: 'Cake 5' },
-  { id: 6, src: '/insta/snap6.jpg', alt: 'Cake 6' },
-  { id: 7, src: '/insta/snap7.jpg', alt: 'Cake 7' },
-  { id: 8, src: '/insta/snap9.jpg', alt: 'Cake 8' },
-];
+
+interface Cake {
+  id: string;
+  fileId: string;
+  alt?: string;
+}
 
 export default function Slider() {
+  const [data, setData] = useState<Cake[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/hero', {
+          cache: 'force-cache',
+          next: { revalidate: 3600 },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch images');
+        }
+
+        const result = await response.json();
+        const { slider } = result;
+
+        if (!slider || slider.length === 0) {
+          throw new Error('No slider data found');
+        }
+
+        setData(slider);
+      } catch (error) {
+        console.error('Error fetching collections:', error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Failed to load collections. Please try again later.</div>;
+  }
+
   return (
-    <>
-      <div className="slider-container">
-        <h2 className="slider-heading">Find us on Instagram</h2>
-       
+    <div className="slider-container">
+      <h2 className="slider-heading">Find us on Instagram</h2>
 
-          <Swiper
-            slidesPerView={2}
-            spaceBetween={20}
-            centeredSlides={true} // Center the active slide
-            loop={true} // Enable looping for proper centering
-            pagination={{
-              clickable: true,
-            }}
-            autoplay={{
-              delay: 3000, // 3 seconds delay
-              disableOnInteraction: false, // Continue autoplay after user interaction
-            }}
-            modules={[Pagination, Autoplay]} // Add necessary modules
-            className="mySwiper"
-            breakpoints={{
-              640: {
-                slidesPerView: 4,
-              },
-              1024: {
-                slidesPerView: 6,
-              },
-            }}
-          >
-            {cakeImages.map((cake) => (
-              <SwiperSlide key={cake.id}>
-                <div className="slide-content">
-                  <Image 
-                    src={cake.src}
-                    alt={cake.alt}
-                    className='cake-image'
-                    fill // Dynamically fill the container
-                    sizes="(max-width: 768px) 100px, (min-width: 769px) 300px" // Set responsive sizes
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-      </div>
-    </>
+      <Swiper
+        slidesPerView={2}
+        spaceBetween={20}
+        centeredSlides={true}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        modules={[Pagination, Autoplay]}
+        className="mySwiper"
+        breakpoints={{
+          640: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 6,
+          },
+        }}
+      >
+        {data.map((cake) => (
+          <SwiperSlide key={cake.id}>
+            <div className="slide-content">
+              <Image
+                src={cake.fileId}
+                alt={cake.alt || 'cake image'}
+                className="cake-image"
+                fill
+                sizes="(max-width: 768px) 100px, (min-width: 769px) 300px"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }
