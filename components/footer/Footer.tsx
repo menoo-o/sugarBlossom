@@ -12,28 +12,9 @@ export default function Footer() {
     return (
       <>
         <section className='footer-container'>
-          {/* Social Media Links */}
-          <div className='social-links'>
-            <h3>Stay Connected</h3>
-            <div className='social-icons'>
-              <Link href='/'>
-                <Image 
-                  src='/icons/insta.svg'
-                  alt='Instagram'
-                  width={25}
-                  height={25}
-                />    
-              </Link>
-              <Link href='/'>
-                <Image 
-                  src='/icons/fb.svg'
-                  alt='Facebook'
-                  width={25}
-                  height={25}
-                />    
-              </Link>
-            </div>
-          </div>
+        
+          
+      
   
           {/* Feedback Section */}
           <div className='feedback-container'>
@@ -66,17 +47,35 @@ export default function Footer() {
               <li><Link href='/privacy'>Privacy Policy</Link></li>
             </ul>
           </div>
+
+          <div className='social-links'>
+            <h3>Stay Connected</h3>
+            <div className='social-icons'>
+              <Link href='/'>
+                <Image 
+                  src='/icons/insta.svg'
+                  alt='Instagram'
+                  width={25}
+                  height={25}
+                />    
+              </Link>
+              <Link href='/'>
+                <Image 
+                  src='/icons/fb.svg'
+                  alt='Facebook'
+                  width={25}
+                  height={25}
+                />    
+              </Link>
+            </div>
+          </div>
   
           {/* Copyright */}
           <div className='copyright'>
             <p>&copy; {currentYear} Sugar Blossom. All rights reserved.</p>
           </div>
 
-        {/* <div className='back-to-top'>
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                Back to Top
-            </button>
-      </div> */}
+
         </section>
       </>
     );

@@ -28,6 +28,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  
 }
 
 .single-occasion img {
@@ -46,6 +47,7 @@
   margin: 0.75rem 0 0; /* Spacing above the title */
   padding: 0 0.5rem; /* Padding to prevent text overflow */
   text-decoration: none !important;
+
 }
 
 /* Responsive adjustments for tablets and desktops */
@@ -56,6 +58,7 @@
 
   .occasion-container h2 {
       font-size: 3rem; /* Larger font size for desktop */
+      
   }
 
   .occasion-container .grid-occasions {

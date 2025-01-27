@@ -16,6 +16,8 @@ export default function Home() {
       <Ordersteps />
       <Occasion />
       <Custom />
+      <Slider />
+  
      
       
 

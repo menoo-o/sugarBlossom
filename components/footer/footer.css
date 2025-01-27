@@ -4,14 +4,21 @@ body{
 }
 
 .footer-container {
-    background-color: #fff5f5; /* Light coral pink background */
-    padding: 20px;
+    background-color: var(--sea-green-2);
+    padding: 2rem;
     text-align: center;
-    color: #333; /* Dark text color */
-    background: linear-gradient(45deg, #fff5f5, #ffebeb); /* Light coral pink gradient */
-    
+    margin-top: auto;
+    color: var(--sea-green-6)
   }
-  
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1rem;
+    text-align: left;
+    padding: 2rem;
+  }
+
   /* Social Links */
   .social-links {
     margin-bottom: 20px;
@@ -21,18 +28,21 @@ body{
     font-size: 1.5rem;
     font-weight: bold;
     color: #ff6f61; /* Coral pink for emphasis */
-    margin-bottom: 10px;
+    margin-bottom: 1em;
+
   }
   
   .social-icons {
     display: flex;
     justify-content: center;
-    gap: 15px; /* Space between icons */
+    max-width: 150px;
+    gap: 1.5rem; /* Space between icons */
   }
   
   /* Feedback Container */
   .feedback-container {
     margin-bottom: 20px;
+    
   }
   
   .feedback-container h3 {
@@ -45,11 +55,12 @@ body{
   .feedback-container p {
     font-size: 1rem;
     margin-bottom: 10px;
+
   }
   
   .feedback-container .email {
     font-weight: bold;
-    color: #3bb4a5; /* Sea green for email */
+    color: var(--sea-green-6);
   }
   
   /* Collection Links */
@@ -79,31 +90,51 @@ body{
   .collection-links a,
   .more-info-links a {
     text-decoration: none;
-    color: #333; /* Dark text color */
+    color: var(--sea-green-6);
     font-size: 1rem;
     transition: color 0.3s ease;
   }
   
   .collection-links a:hover,
   .more-info-links a:hover {
-    color: #3bb4a5; /* Sea green on hover */
+   
+     color: #0E1E2B;;
+
   }
   
   /* Copyright */
   .copyright {
     margin-top: 20px;
     font-size: 0.9rem;
-    color: #555; /* Slightly darker text color */
+    text-align: center;
+    color: var(--sea-green-6);
+    grid-column: -3 / -1; /* Span across all columns */
+
   }
-  
+
+  .feedback-container{
+    display: none;
+  }
+
+  .social-links{
+    display: none;
+  }
   /* Desktop/Tablet Layout */
   @media (min-width: 768px) {
     .footer-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* Two columns */
-      gap: 20px;
+      gap: 3.5rem;
       text-align: left;
-      padding: 40px;
+      padding: 3rem;
+      
+    }
+    .social-links{
+      display: block;
+    }
+
+    .feedback-container{
+      display: block;
     }
   
     .social-links,
@@ -116,6 +147,7 @@ body{
     .copyright {
       grid-column: 1 / -1; /* Span across all columns */
       text-align: center;
+
     }
   }
   
@@ -125,23 +157,8 @@ body{
     }
   }
 
-  .back-to-top {
-    text-align: center;
-    margin-top: 20px;
-  }
   
-  .back-to-top button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #3bb4a5; /* Sea green */
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
   
-  .back-to-top button:hover {
-    background-color: #2a9d8f; /* Darker sea green */
-  }
+ 
+  
+  

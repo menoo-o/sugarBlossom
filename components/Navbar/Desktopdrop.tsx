@@ -72,8 +72,12 @@ const Desktopdrop: React.FC = () => {
           <div className='cakes-occassion-desktop'>
             <h4>Cakes by Occassion</h4>
                 <ul>
-                    <p>Birthday</p>
-                    <p>Wedding</p>
+                    <p>Birthday Cakes</p>
+                    <p>Wedding Cakes</p>
+                    <p>Anniversary Cakes</p>
+                    <p>Nikkah Cakes</p>
+                    <p>Engagement Cakes</p>
+                    <p>Valentine Day</p>
                 </ul>
 
           </div>  
@@ -82,16 +86,21 @@ const Desktopdrop: React.FC = () => {
             <div className='cakes-flavor-desktop'>
                 <h4>Cakes by flavor</h4>
                     <ul>
-                        <p>Vanilla</p>
-                        <p>Chocolate</p>
+                        <p>Berry Vanilla Delight</p>
+                        <p>Lotus Vanilla Dream</p>
+                        <p>Chocolate Ganache Dream</p>
+                        <p>Chocolate Lotus Sensation</p>
                     </ul>
             </div>
 
             <div className='cakes-wedding-desktop'>
-                <h4>Wedding Cakes`</h4>
+                <h4>Wedding Cakes</h4>
                     <ul>
-                        <p>1-Tier</p>
-                        <p>2 Tier</p>
+                        <p>One Tier</p>
+                        <p>Two Tier</p>
+                        <p>Three Tier</p>
+                        <p>Four Tier</p>
+                        <p>About Our Wedding Cakes</p>
                     </ul>
             </div>
 

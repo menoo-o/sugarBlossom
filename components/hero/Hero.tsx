@@ -10,13 +10,11 @@ export default function Hero() {
             <div className='hero-img'>
                 <Image  
                     src='/herov11.jpg'
-                    alt='hero image'
-                    layout="fill" /* Covers entire container */
-                    priority={true} /* Ensures faster loading */
-                    className='hero-img'
-                />
-
-            </div>    
+                    fill
+                    priority={true}
+                    alt='hero-img'
+                    />
+            </div>
             {/*text & btn higher z-index place on the image */}
             <div className='hero-caption'>
                 <h1>Elevate your celebrations with <br /><span>Sugar Blossom&#39;s</span><br /> premium cakes</h1>

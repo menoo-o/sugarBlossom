@@ -4,8 +4,6 @@
   align-items: center; /* Center content horizontally */
   text-align: center; /* Center align text */
   gap: 0.5rem; /* Space between elements */
-
- 
   
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
 }
@@ -18,21 +16,29 @@
 .single-occasion img {
   width: 100%; /* Full width for responsiveness */
   height: auto; /* Maintain aspect ratio */
-  border-radius: 0.75rem; /* Rounded corners for images */
-  object-fit: cover; /* Ensure image fits nicely */
+ 
 }
 
 
-.single-occasion h3 {
-  font-size: 1.2rem; /* Emphasize title */
-  font-weight: 600; /* Slightly bold */
-  color: #333; /* Neutral dark text color */
+.image-container {
+  width: 100%; /* Full width for responsiveness */
+  height: auto; /* Maintain aspect ratio */
+  position: relative; /* Required for next/image with 'fill' */
+  max-width: 300px; /* Adjust as per your design for desktop */
+  aspect-ratio: 1 / 1; /* Maintain a square shape */
+}
+
+
+.single-occasion h3 { 
+  font-weight: 500; /* Slightly bold */
   text-decoration: none;
+  line-height: 1.5em;
   margin: 0.5rem 0 0; /* Space around title */
+  
 }
 
 .single-occasion h4 {
-  font-size: 1rem; /* Slightly smaller than title */
+  
   font-weight: 500; /* Medium emphasis */
   color: #666; /* Subtle gray for price */
   margin: 0; /* Remove default margins */

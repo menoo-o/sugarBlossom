@@ -12,13 +12,16 @@ interface SingleOccasionProps {
 export default function SingleOccasion({ img, title, price, className }: SingleOccasionProps) {
   return (
     <div className={`single-occasion ${className}`}> {/* Apply the className */}
-      <Image
-        src={img}
-        alt={title}
-        width={100}
-        height={100}
-      />
-      <h3>{title}</h3>
+        <div className="image-container">
+          <Image
+            src={img}
+            alt={title}
+            fill // Dynamically fill the container
+            sizes="(max-width: 768px) 100px, (min-width: 769px) 300px" // Set responsive sizes
+            className="occasion-img"
+          />
+  </div>
+      <h3 style={{ fontSize: '1.4rem' }}>{title}</h3>
       <h4>{price}</h4>
     </div>
   );

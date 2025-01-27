@@ -1,16 +1,16 @@
 /* Container for the entire section */
 .offering-container {
   padding: 2rem;
+  padding-top: 0;
   text-align: center;
-  margin-top: 1rem;
-  background-color: white;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
 .offering-container h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
- color: var(--sea-green-2);
+  color: var(--sea-green-2);
   margin-bottom: 1.5rem;
 
   
@@ -31,12 +31,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
   overflow: hidden; /* Ensure the image doesn't overflow */
   height: 100%; /* Ensure the card takes full height */
+  
 }
 
 .single-occasion.single:hover {
@@ -46,18 +43,19 @@
 
 .single-occasion.single img {
   width: 100%; /* Ensure the image takes full width */
-  height: 340px; /* Fixed height for consistency */
-  object-fit: cover; /* Ensure the image covers the area */
-  border-radius: 12px 12px 0 0; /* Rounded corners only at the top */
+  height: 330px; /* Fixed height for consistency */
+  object-fit: fill; /* Ensure the image covers the area */
+  
 }
 
 .single-occasion.single h3 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--sea-green-5); /* Dark color for the title */
+
+  color: var(--sea-green-5) !important; /* Dark color for the title */
   margin: 0.2rem 0 0.1rem; /* Spacing around the title */
   padding: 0 0.5rem; /* Padding to prevent text overflow */
   text-decoration: none;
+
+  
 }
 
 @media only screen and (min-width: 768px) {
@@ -67,6 +65,8 @@
   
 .offering-container h2 {
   font-size: 3rem ;
+  
+
 
 }
 

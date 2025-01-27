@@ -204,7 +204,24 @@
 
   .dropdown-desktop, .nav-menu-desktop, .menu-primary-desktop{
     display: block;
+  
 
+  }
+
+  .cakes-occassion-desktop h4, .cakes-flavor-desktop h4, .cakes-wedding-desktop h4, .all-cakes h4, .gifts-candles h4{
+    text-transform: uppercase;
+    color: var(--sea-green-1);
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: 0.04cap;
+  }
+
+  .cakes-occassion-desktop p, .cakes-flavor-desktop p, .cakes-wedding-desktop p{
+
+    color: var(--secondary-color-2);
+    font-weight: 400;
+    font-size: 0.9em;
+    letter-spacing: 0.04cap;
   }
     .navbar{
       justify-content: space-between;
@@ -217,7 +234,6 @@
       
       position: absolute;
       background-color: transparent;
-   
       width: 100%;
       height: 2.9em;
       top: 4.3em;
@@ -266,12 +282,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #FBDBDB;
+      background-color: var(--bg-color2);
       
       height: 2.9em;
       position: relative;
       z-index: 1000;
-      color: #156d6d;
+      color: var(--sea-green-1);
 
     }
 
@@ -287,18 +303,18 @@
       justify-content: space-between;
       position: relative;
       z-index: 82;
-    background-color: #f8f0ef;
+      background-color: #ffffff;
+
       padding: 2rem 10rem;
       display: flex;
       flex-direction: row;
-
-  
-
     }
+
+
 
     .cakes-candles-gifts{
       display: flex;
-      gap: 3.55rem;
+      gap: 2rem;
     }
 
     /* Transitions for Nested Menus */
