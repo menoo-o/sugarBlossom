@@ -6,8 +6,8 @@ export default function Offerings() {
 
     const offeringImgs = [
         { id: 1, img: "/occasion/hbd.jpg", title: "Cakes" },
-        { id: 2, img: "/occasion/ty.jpg", title: "CupCakes" },
-        { id: 3, img: "/occasion/congrats.jpg", title: "Bento Cakes" },
+        { id: 2, img: "/cup1.jpg", title: "CupCakes" },
+        { id: 3, img: "/bento.webp", title: "Bento Cakes" },
       ];
 
   

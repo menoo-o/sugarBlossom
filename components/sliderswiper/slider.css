@@ -11,6 +11,7 @@
   font-weight: 700; /* Bold weight for readability */
   color: var(--sea-green-1);
   margin-bottom: 1.5rem; /* Spacing below the heading */
+
 }
 
 /* Swiper container */
@@ -18,6 +19,7 @@
   width: 100%;
   max-width: 1200px; /* Limit width for better readability */
   margin: 0 auto; /* Center the slider */
+  margin-bottom: 10px;  
 }
 
 /* Slide content */
@@ -26,19 +28,26 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.3s ease, flex-grow 0.3s ease; /* Smooth transitions */
+  width: 100%; /* Full width for responsiveness */
+  height: auto; /* Maintain aspect ratio */
+  position: relative; /* Required for next/image with 'fill' */
+  max-width: 300px; /* Adjust as per your design for desktop */
+  aspect-ratio: 10 / 11; /* Maintain a square shape */
+  width: calc(100% - 20px); /* Adjust width to leave space for the gap */
+  margin: 10px 10px; /* Add space between slides */  
+  margin-bottom: 30px;
 }
 
 /* Image styling */
 .cake-image {
-  width: 100%; /* Ensure the image takes full width */
-  height: 180px; /* Maintain aspect ratio */
-  margin-bottom: 4rem;
-  transition: transform 0.3s ease, flex-grow 0.3s ease; /* Smooth transitions */
+  object-fit: cover;
+  transition: transform 0.7s ease, flex-grow 0.7s ease; /* Smooth transitions */
 }
 
 /* Apply flex-grow and scale effect on the active slide */
 .swiper-slide-active .slide-content {
-  flex-grow: 2; /* Grow the active slide */
+  margin: 0 10px; /* Ensure spacing remains for the active slide */
+  flex-grow: 1; /* Grow the active slide */
 }
 
 .swiper-slide-active .cake-image {
@@ -50,14 +59,21 @@
   background-color: var(--secondary-color);
   opacity: 1; /* Fully visible */
   width: 10px; /* Bullet size */
-
   height: 10px;
   margin: 0px 5px; /* Space between bullets */
   transition: background 0.3s ease; /* Smooth transition for bullet color */
 }
 
+.swiper-pagination {
+  position: relative; /* Ensure it is positioned below the images */
+  bottom: -2rem; /* Moves the pagination below the images */
+  display: flex; /* Align bullets in a row */
+  justify-content: center; /* Center align the bullets */
+}
+
 .swiper-pagination-bullet-active {
   background: var(--primary-color); /* Active bullet color */
+  
 }
 
 /* Responsive adjustments */
@@ -65,8 +81,10 @@
   .slider-heading {
       font-size: 3rem; /* Larger font size for desktop */
   }
-
-  .cake-image {
-      width: 90%; /* Slightly smaller images on desktop */
-  }
+  /* Slide content */
+.slide-content {
+   max-width: 1000px; /* Adjust as per your design for desktop */
+  aspect-ratio: 10 / 12; /* Rectangular aspect ratio */
+}
+ 
 }

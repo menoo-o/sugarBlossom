@@ -9,14 +9,14 @@ import Image from 'next/image';
 
 // Mock data for cake images
 const cakeImages = [
-  { id: 1, src: '/insta/cake1.jpeg', alt: 'Cake 1' },
-  { id: 2, src: '/insta/cake2.jpeg', alt: 'Cake 2' },
-  { id: 3, src: '/insta/cake3.png', alt: 'Cake 3' },
-  { id: 4, src: '/insta/cake4.jpeg', alt: 'Cake 4' },
-  { id: 5, src: '/insta/cake5.jpeg', alt: 'Cake 5' },
-  { id: 6, src: '/insta/cake6.jpeg', alt: 'Cake 6' },
-  { id: 7, src: '/insta/cake7.jpeg', alt: 'Cake 7' },
-  { id: 8, src: '/insta/cake8.jpeg', alt: 'Cake 8' },
+  { id: 1, src: '/insta/snap1.jpg', alt: 'Cake 1' },
+  { id: 2, src: '/insta/snap2.jpg', alt: 'Cake 2' },
+  { id: 3, src: '/insta/snap3.jpg', alt: 'Cake 3' },
+  { id: 4, src: '/insta/snap4.jpg', alt: 'Cake 4' },
+  { id: 5, src: '/insta/snap5.jpg', alt: 'Cake 5' },
+  { id: 6, src: '/insta/snap6.jpg', alt: 'Cake 6' },
+  { id: 7, src: '/insta/snap7.jpg', alt: 'Cake 7' },
+  { id: 8, src: '/insta/snap9.jpg', alt: 'Cake 8' },
 ];
 
 export default function Slider() {
@@ -56,8 +56,8 @@ export default function Slider() {
                     src={cake.src}
                     alt={cake.alt}
                     className='cake-image'
-                    width={100}
-                    height={100}
+                    fill // Dynamically fill the container
+                    sizes="(max-width: 768px) 100px, (min-width: 769px) 300px" // Set responsive sizes
                   />
                 </div>
               </SwiperSlide>
