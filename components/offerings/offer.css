@@ -1,56 +1,76 @@
-/* Offering Container */
+/* Container for the entire section */
 .offering-container {
-    padding: 20px;
-    text-align: center;
-   
+  padding: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+.offering-container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+ color: var(--sea-green-2);
+  margin-bottom: 1.5rem;
+
+  
+}
+
+/* Grid layout for the offerings */
+.offering-mapping {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 1.5rem; /* Space between cards */
+  max-width: 1100px; /* Limit the width for better readability */
+  margin: 0 auto; /* Center the grid */
+
+}
+
+/* Styling for the SingleOccasion component */
+.single-occasion.single {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+  overflow: hidden; /* Ensure the image doesn't overflow */
+  height: 100%; /* Ensure the card takes full height */
+}
+
+.single-occasion.single:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.single-occasion.single img {
+  width: 100%; /* Ensure the image takes full width */
+  height: 340px; /* Fixed height for consistency */
+  object-fit: cover; /* Ensure the image covers the area */
+  border-radius: 12px 12px 0 0; /* Rounded corners only at the top */
+}
+
+.single-occasion.single h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--sea-green-5); /* Dark color for the title */
+  margin: 0.2rem 0 0.1rem; /* Spacing around the title */
+  padding: 0 0.5rem; /* Padding to prevent text overflow */
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .offering-container{
+    margin-top: 2rem;
   }
   
-  .offering-container h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
+.offering-container h2 {
+  font-size: 3rem ;
+
+}
+
+  .offering-mapping{
+    gap: 3rem; /* Space between cards */
   }
-  
-  /* Offering Mapping */
-  .offering-mapping {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Single Occasion Item */
-  .single-occasion {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .single-occasion img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .single-occasion h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #555;
-  }
-  
-  /* Styles applied via className */
-  .single {
-    background-color: #f8f8f8;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .single:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  }
+}

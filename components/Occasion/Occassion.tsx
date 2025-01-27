@@ -19,10 +19,14 @@ export default function Occasion() {
       <div className="grid-occasions">
 
         {occasionImgs.map((occasion) => (
-          <Link href={`/collections/${occasion.title}`} key={occasion.id}>
+          <Link href={`/collections/${occasion.title}`} key={occasion.id}
+          style={{ textDecoration: 'none' }}
+          >
             <SingleOccasion
             img={occasion.img}
             title={occasion.title}
+            className="single-occasion" 
+            
           />
           </Link>
           

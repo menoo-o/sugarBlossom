@@ -24,11 +24,11 @@ export default function Hero() {
 
             <div className='links'>
                 <div className='link-baked-to-order'>
-                    <Link href='/' className="btn btn-glass">Baked To Order</Link>
+                    <Link href='/collections' className="btn btn-glass">Baked To Order</Link>
                     <p>Get it in 5 Days</p>
                 </div>
                 <div className='link-order-now'>
-                    <Link href='/' className="btn btn-glass order-now">Last Minute Order</Link>
+                    <Link href='/collections' className="btn btn-glass order-now">Last Minute Order</Link>
                     <p>Get it in 48 Hrs+</p>
                 </div>
 

@@ -1,11 +1,11 @@
 /* Custom Container */
 .custom-container {
-    padding: 40px 20px;
-    background-color: #fff5f5; /* Light coral pink background */
+    padding: 40px 12px;
+    background-color: var(--bg-color2); /* Light coral pink background */
     text-align: center;
-    border-radius: 15px;
-    margin: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 0px;
+    margin-top: 0;
+    
   }
   
   /* Custom Text */
@@ -13,12 +13,13 @@
     font-size: 2rem; /* Large font size for the heading */
     font-weight: bold;
     color: #ff6f61; /* Coral pink for emphasis */
+    color: var(--sea-green-2);
     margin-bottom: 15px;
   }
   
   .custom-text h4 {
     font-size: 1.2rem; /* Medium font size for the subheading */
-    color: #555; /* Darker text for readability */
+    color: var(--sea-green-5);
     margin-bottom: 20px;
   }
   
@@ -29,17 +30,20 @@
   
   .link-custom a {
     display: inline-block;
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    font-weight: bold;
+    padding: 12px 26px;
+    font-size: 1rem;
+    font-weight: 400;
     color: white; /* White text for contrast */
-    background-color: #3bb4a5; /* Sea green for the button */
-    border-radius: 50px; /* Rounded button shape */
+    background-color: var(--sea-green-4); /* Sea green for the button */
+    border-radius: 30px; /* Rounded button shape */
     text-decoration: none; /* Remove underline */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
   }
   
   .link-custom a:hover {
-    background-color: #2a9d8f; /* Darker sea green on hover */
+    background-color: var(--heading); 
+    color: var(--sea-green-2);
     transform: translateY(-3px); /* Lift button on hover */
   }
+
+  

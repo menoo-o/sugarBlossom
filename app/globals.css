@@ -2,9 +2,20 @@
 :root{
   --primary-color: #ff686b;
   --secondary-color: #ffa69e;
+  --secondary-color-2: #F77870;
   --text-color: #a5ffd6;
   --heading: #84dcc6;
   --bg-color: #ffffff;
+  --bg-color2: #FADFDB;
+
+  /* sea green colors */
+  --sea-green-1: #16706E;
+  --sea-green-2: #28444B;
+  --sea-green-3: #365B62;
+  --sea-green-4: #457479;
+  --sea-green-5: #63A7A6;
+
+
 }
 
 *{

@@ -1,53 +1,73 @@
-/* Base Styles */
+/* Container for the entire section */
 .occasion-container {
-    padding: 15px;
-    text-align: center;
-    background-color: #ffffff; /* Light background */
+  padding: 2rem 1rem; /* Padding for mobile */
+  background: #f9f9f9; /* Light background for the section */
+  text-align: center;
+}
 
+/* Heading styling */
+.occasion-container h2 {
+  font-size: 2rem; /* Smaller font size for mobile */
+  font-weight: 700; /* Bold weight for emphasis */
+  color: var(--sea-green-1);
+  margin-bottom: 1.5rem;
+}
+
+/* Grid layout for occasions */
+.occasion-container .grid-occasions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 1rem; /* Space between items */
+  max-width: 800px; /* Limit width for better readability */
+  margin: 0 auto; /* Center the grid */
+}
+
+/* Styling for the SingleOccasion component */
+.single-occasion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.single-occasion img {
+  width: 100%; /* Ensure the image takes full width */
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover; /* Ensure the image covers the area */
+  border-radius: 0px; /* Slightly rounded corners for the image */
+}
+
+.single-occasion h3 {
+  font-size: 1rem; /* Smaller font size for the title */
+  font-weight: 400; /* Medium weight for readability */
+  color: var(--sea-green-5);
+  text-transform: uppercase;
+  letter-spacing: 0.15cap;
+  margin: 0.75rem 0 0; /* Spacing above the title */
+  padding: 0 0.5rem; /* Padding to prevent text overflow */
+  text-decoration: none !important;
+}
+
+/* Responsive adjustments for tablets and desktops */
+@media (min-width: 768px) {
+  .occasion-container {
+      padding: 3rem 2rem; /* More padding for larger screens */
   }
-  
+
   .occasion-container h2 {
-    font-size: 1.9em;
-    margin-bottom: 20px;
-    color: #163026; /* Deep Charcoal */
+      font-size: 3rem; /* Larger font size for desktop */
   }
-  
-  .grid-occasions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
-    gap: 10px; /* Space between grid items */
+
+  .occasion-container .grid-occasions {
+      gap: 4.2rem; /* More space between items */
   }
-  
-  
-  .occasion-image {
-    width: 167px; /* Fixed size for images */
-    height: 167px;
-    object-fit: contain; /* Ensure images fit well */
+
+  .single-occasion img {
+      height: 240px; /* Larger image height for desktop */
+      width: 225px;
   }
-  
-  .occasion-title {
-    font-size: 1.15em;
-    margin-top: 5px;
-    text-transform: uppercase;
-    color: #34C759; /* Sea Green */
+
+  .single-occasion h3 {
+      font-size: 1.25rem; /* Larger font size for desktop */
   }
-  
-  /* Responsive Styles for Larger Screens */
-  @media (min-width: 768px) {
-    .occasion-container h2 {
-      font-size: 2em; /* Larger heading on bigger screens */
-    }
-  
-    .grid-occasions {
-      grid-template-columns: repeat(4, 1fr); /* 4-column grid on larger screens */
-    }
-  
-    .occasion-image {
-      width: 100px; /* Slightly larger images */
-      height: 100px;
-    }
-  
-    .occasion-title {
-      font-size: 1.2em; /* Larger text */
-    }
-  }
+}
