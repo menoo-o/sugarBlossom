@@ -5,14 +5,13 @@ import { databases, databaseId, storage, bucketId, birthdayCollectionId, wedding
 
 // Mapping of categories to collection IDs
 const COLLECTION_MAPPING: Record <string, string> = {
-    birthday: birthdayCollectionId,
-    wedding: weddingCollectionId,
-    bento: bentoCollectionId,
-    cupcakes: cupcakesCollectionId,
-    accessories: accessoriesCollectionId,
-    custom: customCollectionId
+    'birthday-cakes': birthdayCollectionId,
+    'wedding-cakes': weddingCollectionId,
+    'bento-cakes': bentoCollectionId,
+    'cupcakes': cupcakesCollectionId,
+    'cakes-accessories': accessoriesCollectionId,
+    'personalized-cakes': customCollectionId
 };
-
 
 export async function GET( request: Request, { params }:  { params: Promise< { category: string; productName: string } >}) {
 

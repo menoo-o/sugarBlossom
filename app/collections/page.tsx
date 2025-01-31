@@ -10,6 +10,7 @@ export default async function CollectionsPage() {
             cache: 'force-cache', // Ensures SSG behavior
             next: { revalidate: 3 },
         });
+
         const data = await response.json();
 
         if (!response.ok) {
@@ -18,28 +19,55 @@ export default async function CollectionsPage() {
 
         const { collections } = data;
 
+        // Function to format the collection name
+            const formatCollectionName = (name: string) => {
+                // Step 1: Replace hyphens with spaces
+                const nameWithSpaces = name.split('-').join(' ');
+            
+                // Step 2: Capitalize each word
+                const capitalizedName = nameWithSpaces
+                .split(' ')
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+            
+                return capitalizedName;
+            };
+            
+
+
         return (
-            <div>
-                <h1>Collections</h1>
+            <div className='collections-page-container'>
+                <div className='collections-header'>
+                    <h1>Collections</h1>
+
+                </div>
+                
+
                 <div className="collections-container">
                     {collections.map((collection: any) => (
                         <div key={collection.id} className="collection-card">
+
+                        <Link  href={`/collections/${collection.name}`} >
+                        
+                       
                             <Image  
                                 src={collection.imageUrl}
                                 alt={collection.name}
-                                width={100}
-                                height={100}
+                                width={560} // Double the display size for Retina screens
+                                height={600} // Double the display size for Retina screens
+                                quality={100} // Ensure maximum quality
+                                sizes="(max-width: 768px) 100vw, 50vw" // Responsive sizes
                                 className='collection-img'
+                                priority
                             />
-                           
-                            <h2 className="collection-name">{collection.name}</h2>
 
-                            <Link
-                                href={`/collections/${collection.name}`}
-                                className="collection-link"
-                            >
-                                View Collection
-                            </Link>
+                        </Link>
+
+                           
+                            <h2 className="collection-name">
+                            {formatCollectionName(collection.name)}
+                            </h2>
+
                         </div>
                     ))}
                 </div>

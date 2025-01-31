@@ -5,14 +5,16 @@ import { databases, databaseId, birthdayCollectionId, weddingCollectionId, bento
 
 // Mapping of categories to collection IDs
 const COLLECTION_MAPPING: Record <string, string> = {
-    birthday: birthdayCollectionId,
-    wedding: weddingCollectionId,
-    bento: bentoCollectionId,
-    cupcakes: cupcakesCollectionId,
-    accessories: accessoriesCollectionId,
-    custom: customCollectionId
+    'birthday-cakes': birthdayCollectionId,
+    'wedding-cakes': weddingCollectionId,
+    'bento-cakes': bentoCollectionId,
+    'cupcakes': cupcakesCollectionId,
+    'cakes-accessories': accessoriesCollectionId,
+    'personalized-cakes': customCollectionId
 };
 
+
+ 
 
 export async function GET(request: Request, { params }: { params: Promise <{ category: string }> }) {
     const { category } = await params;
@@ -30,14 +32,17 @@ export async function GET(request: Request, { params }: { params: Promise <{ cat
         // Fetch products from Appwrite
         const response = await databases.listDocuments(databaseId, collectionId);
 
+        
         // Map products to the required format
-        const products = response.documents.map((doc: any) => ({
+        const products = response.documents.map((doc) => ({
             id: doc.$id,
             name: doc.name,
             description: doc.description,
             price: doc.price,
             imageUrl: storage.getFileView(bucketId, doc.fileId), // Assuming you store image URLs in Appwrite
         }));
+
+        console.log(products)
 
         return NextResponse.json({ products }, { status: 200 });
     } catch (error) {
