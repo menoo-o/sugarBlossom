@@ -11,10 +11,7 @@ const COLLECTION_MAPPING: Record <string, string> = {
     'cupcakes': cupcakesCollectionId,
     'cakes-accessories': accessoriesCollectionId,
     'personalized-cakes': customCollectionId
-};
-
-
- 
+}; 
 
 export async function GET(request: Request, { params }: { params: Promise <{ category: string }> }) {
     const { category } = await params;
@@ -50,3 +47,6 @@ export async function GET(request: Request, { params }: { params: Promise <{ cat
         return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
     }
 }
+
+
+

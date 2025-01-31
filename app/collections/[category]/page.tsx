@@ -1,6 +1,8 @@
 // app/collections/[category]/page.tsx
 import Link from "next/link";
 import Image from "next/image";
+import formatCollectionName from "@/utils/formatName";
+import './products.css'
 
 
 export default async function CategoryPage({ params }: { params: Promise <{ category: string }> }) {
@@ -24,30 +26,36 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
 
         const { products } = data;
 
+        
+
         return (
             <div className="category-container">
-                <h1>{category}</h1>
+                <h1>{formatCollectionName(category)}</h1>
                 <div className="product-container">
                     {products.map((product: any) => (
                         <div key={product.id} className="product card">
-                            <Image 
-                                src={product.imageUrl}
-                                alt={product.name}
-                                className="product-img"
-                                width={200}
-                                height={200}
-                            />
-                            
-                            <h2 className="product-name">{product.name}</h2>
-                            <p className="product-descrip">{product.description}</p>
-                            <p className="product-price">${product.price}</p>
-
-                            <Link
+                             <Link
                                href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
                                 className="product-single-display-link"
                             >
-                                View Details
-                            </Link>
+                                <Image 
+                                    src={product.imageUrl}
+                                    alt={product.name}
+                                    className="product-img"
+                                    width={560} // Double the display size for Retina screens
+                                    height={600} // Double the display size for Retina screens
+                                    quality={100} // Ensure maximum quality
+                                    sizes="(max-width: 768px) 100vw, 50vw" // Responsive sizes
+                                />
+
+</Link>
+                    <div className="product-info">
+                            <h2 className="product-name">{formatCollectionName(product.name)}</h2>
+                            <p className="product-price">From: ${product.price}</p>
+                        </div>
+                                            
+        
+                           
                         </div>
                     ))}
                 </div>

@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import './collection.css'
+import formatCollectionName from '@/utils/formatName';
 
 export default async function CollectionsPage() {
     try {
@@ -10,46 +11,21 @@ export default async function CollectionsPage() {
             cache: 'force-cache', // Ensures SSG behavior
             next: { revalidate: 3 },
         });
-
         const data = await response.json();
-
         if (!response.ok) {
             throw new Error(data.error || 'Failed to fetch collections');
         }
-
         const { collections } = data;
-
-        // Function to format the collection name
-            const formatCollectionName = (name: string) => {
-                // Step 1: Replace hyphens with spaces
-                const nameWithSpaces = name.split('-').join(' ');
-            
-                // Step 2: Capitalize each word
-                const capitalizedName = nameWithSpaces
-                .split(' ')
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' ');
-            
-                return capitalizedName;
-            };
-            
-
-
         return (
             <div className='collections-page-container'>
                 <div className='collections-header'>
                     <h1>Collections</h1>
-
                 </div>
-                
-
                 <div className="collections-container">
                     {collections.map((collection: any) => (
                         <div key={collection.id} className="collection-card">
 
-                        <Link  href={`/collections/${collection.name}`} >
-                        
-                       
+                        <Link  href={`/collections/${collection.name}`} > 
                             <Image  
                                 src={collection.imageUrl}
                                 alt={collection.name}
@@ -60,14 +36,10 @@ export default async function CollectionsPage() {
                                 className='collection-img'
                                 priority
                             />
-
                         </Link>
-
-                           
                             <h2 className="collection-name">
                             {formatCollectionName(collection.name)}
                             </h2>
-
                         </div>
                     ))}
                 </div>
