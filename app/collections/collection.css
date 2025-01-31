@@ -37,7 +37,7 @@
     align-items: center;  /* Centers everything inside */
     justify-content: center;
     text-align: center;
-
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 .collection-img {

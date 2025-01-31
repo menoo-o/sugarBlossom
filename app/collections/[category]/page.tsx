@@ -34,7 +34,8 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
                 <div className="product-container">
                     {products.map((product: any) => (
                         <div key={product.id} className="product card">
-                             <Link
+                            <div className="product-img-container">
+                            <Link
                                href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
                                 className="product-single-display-link"
                             >
@@ -47,10 +48,15 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
                                     quality={100} // Ensure maximum quality
                                     sizes="(max-width: 768px) 100vw, 50vw" // Responsive sizes
                                 />
+                            </Link>
+                            </div>
+                           
 
-</Link>
                     <div className="product-info">
+                            <Link  href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
+                                className="product-single-display-link">
                             <h2 className="product-name">{formatCollectionName(product.name)}</h2>
+                            </Link>
                             <p className="product-price">From: ${product.price}</p>
                         </div>
                                             

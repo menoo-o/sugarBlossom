@@ -58,8 +58,8 @@ const Navbar: React.FC = () => {
           <Image 
                 src='/icons/search.svg'
                 alt='search'
-                height={31}
-                width={31}
+                height={29}
+                width={29}
                 className='search'
 
               />
@@ -68,8 +68,8 @@ const Navbar: React.FC = () => {
           <Image
             src="/icons/cart.svg"
             alt="Cart"
-            width={32}
-            height={32}
+            width={29}
+            height={29}
             className='cart-img'
             />
             {/* cart counting */}
@@ -77,8 +77,8 @@ const Navbar: React.FC = () => {
           <Image 
             src='/icons/wishlist.svg'
             alt='wishlist'
-            height={26}
-            width={26}
+            height={23}
+            width={23}
             className='wishlist'
 
           />

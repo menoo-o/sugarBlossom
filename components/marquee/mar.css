@@ -6,13 +6,12 @@
     width: 100%;
     overflow: hidden; /* Hide overflowing content */
     white-space: nowrap; /* Keep text in a single line */
-    background-color: #f09e9a; /* 
-    /* color: #F7D9D1  ;  */
-    color: #F7D9D1;
-    padding: 10px 0;
-    font-size: 1em;
-    font-weight: bold;
-    height: 1.85em; /* Fixed height to show one line at a time */
+    background-color: var(--secondary-color); 
+    color: var(--sea-green-3);
+    padding: 12px 0;
+    letter-spacing: 2.5px;
+    font-size: 0.8em;
+    height: 1.75em; /* Fixed height to show one line at a time */
     z-index: 2001;
   }
   
@@ -23,6 +22,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+
   }
   
   .marquee-content span {
