@@ -4,8 +4,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 5.2em;
-  margin-top: 1.86em;
+  height: 5em;
+  margin-top: 1.5em;
   background-color: #ffffff;
   padding: 1rem 1.5rem;
   z-index: 1000;
@@ -227,7 +227,8 @@
   .navbar {
 
     padding: 1rem 1.5rem;
-    }
+    margin-top: 0.7em;  
+  }
 
     .nav-menu-desktop{
       

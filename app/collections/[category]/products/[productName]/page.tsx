@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-
-
+import './single.css'
+import formatCollectionName from "@/utils/formatName";
 
 
 export default async function ProductPage({
@@ -44,21 +44,40 @@ export default async function ProductPage({
         }
 
         return (
-            <div>
-                <h1>{product.name}</h1>
-                <Image 
-                    src={product.imageUrl}
-                   alt={product.name}
-                   className="product-img"
-                    width={200}
-                    height={200}
-                                            />
-
-                <p className="text-gray-600 mt-4">{product.description}</p>
-                <p className="text-lg font-bold mt-2">${product.price}</p>
-
-                <Link href='/collections'>back to collections</Link>
+            <div className="product-display-container">
+            {/* Back to Collections Link */}
+            <Link href="/collections" className="back-to-collections-link">
+              &larr; Back to Collections
+            </Link>
+      
+            {/* Product Details */}
+            <div className="product-details">
+              {/* Product Image */}
+              <div className="product-image-container">
+                <Image
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="product-img"
+                  priority
+                  width={560} // Double the display size for Retina screens
+                  height={600} // Double the display size for Retina screens
+                  quality={100} // Ensure maximum quality
+                  sizes="(max-width: 768px) 100vw, 50vw" // Responsive sizes
+                />
+              </div>
+      
+              {/* Product Information */}
+              <div className="product-info">
+                <h1 className="product-name">{formatCollectionName(product.name)}</h1>
+                <p className="product-description">{product.description}</p>
+                <p className="product-description">Want to add a personal touch? Check out all of our personalised cake options <span className="span-ele">here</span>!</p>
+                <p className="product-price">${product.price}</p>
+      
+                {/* Call-to-Action Button */}
+                <button className="add-to-cart-button">Add to Cart</button>
+              </div>
             </div>
+          </div>
         );
     } catch (error) {
         console.error('Error fetching product details:', error);
