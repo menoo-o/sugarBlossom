@@ -11,11 +11,10 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
     try {
         // Fetch products for the category from the API
         const response = await fetch(`http://localhost:3000/api/collections/${category}`, 
-            //SSG behavior
-            // {
-        //     cache: 'force-cache',
-        //     next: { revalidate: 3 },
-        // }
+        {
+            cache: 'force-cache',
+            next: { revalidate: 36000 },
+        }
     );
         const data = await response.json();
         console.log(data)
@@ -38,9 +37,11 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
                             <Link
                                href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
                                 className="product-single-display-link"
+                                prefetch={true}
+                                
                             >
                                 <Image 
-                                    src={product.imageUrl}
+                                    src={product.imgspercake}
                                     alt={product.name}
                                     className="product-img"
                                     width={560} // Double the display size for Retina screens
@@ -54,7 +55,9 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
 
                     <div className="product-info">
                             <Link  href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
-                                className="product-single-display-link">
+                                className="product-single-display-link"
+                                prefetch={true}
+                                >
                             <h2 className="product-name">{formatCollectionName(product.name)}</h2>
                             </Link>
                             <p className="product-price">From: ${product.price}</p>

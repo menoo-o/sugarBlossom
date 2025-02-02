@@ -36,7 +36,9 @@ export async function GET(request: Request, { params }: { params: Promise <{ cat
             name: doc.name,
             description: doc.description,
             price: doc.price,
-            imageUrl: storage.getFileView(bucketId, doc.fileId), // Assuming you store image URLs in Appwrite
+            imgspercake: Array.isArray(doc.imgspercake) && doc.imgspercake.length > 0 
+            ? storage.getFileView(bucketId, doc.imgspercake[0])  // Get only the first image
+            : null, // Handle case where there are no images
         }));
 
         console.log(products)

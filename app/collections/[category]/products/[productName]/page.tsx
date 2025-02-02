@@ -1,21 +1,40 @@
 'use client'; // Mark this as a Client Component
 
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  imgspercake: string[]; // Array of image URLs
+}
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation'; // Import useParams
 import Image from 'next/image';
-import Link from 'next/link';
+import formatCollectionName from '@/utils/formatName';
+import './single.css'
 
 export default function ProductPage() {
   // Use useParams to get route parameters
   const params = useParams();
+  
   const { category, productName } = params as { category: string; productName: string };
 
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [mainImage, setMainImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [selectedSize, setSelectedSize] = useState<number | null>(null);
+  
+  const servingSize = [
+    { id: 1, size: "4", servingCapacity: "Serves 3-4 persons", multiplier: 1 }, // Base price
+    { id: 2, size: "7", servingCapacity: "Serves 8-12 persons", multiplier: 2 },
+    { id: 3, size: "10", servingCapacity: "Serves 18-26 persons", multiplier: 2.5 },
+    { id: 4, size: "13", servingCapacity: "Serves 34-50 persons", multiplier: 3 },
+  ];
 
-  useEffect(() => {
+
+  useEffect ( () => {
     if (!category || !productName) {
       setError('Invalid category or product name.');
       setIsLoading(false);
@@ -41,6 +60,7 @@ export default function ProductPage() {
       }
 
       setProduct(data.product);
+
   
       setMainImage(data.product.imgspercake?.[0] || null);
     } catch (err) {
@@ -63,24 +83,25 @@ export default function ProductPage() {
     return <div className="error-message">Product not found.</div>;
   }
 
+
+
   return (
     <div className="product-display-container">
-      {/* Back to Collections Link */}
-      <Link href="/collections" className="back-to-collections-link">
-        &larr; Back to Collections
-      </Link>
 
       {/* Product Details */}
       <div className="product-details">
-        {/* Main Product Image */}
-        <div className="product-image-container">
+        <div className='imgs-container'>
+            {/* Main Product Image */}
+        <div className="product-image-container single">
         {mainImage && (
             <Image
               src={mainImage}
-              alt={`${product.name} - Main Image`}
+              alt={`${product.name} - Cake Image`}
               className="main-product-img"
-              width={400}
-              height={400}
+              width={560} // Double the display size for Retina screens
+              height={600} // Double the display size for Retina screens
+              quality={100} // Ensure maximum quality
+              sizes="(max-width: 768px) 100vw, 50vw" // Responsive sizes
               priority
             />
           )}
@@ -96,23 +117,49 @@ export default function ProductPage() {
             >
               <Image
                 src={imgUrl}
-                alt={`${product.name} - Image ${index + 1}`}
+                alt={`${product.name} -Cake Image ${index + 1}`}
                 className="additional-img"
-                width={100} // Smaller size for additional images
-                height={100}
+                width={95} // Smaller size for additional images
+                height={95}
+                quality={100} // Ensure maximum quality
               />
             </div>
           ))}
         </div>
+        </div>
+      
 
         {/* Product Information */}
         <div className="product-info">
-          <h1 className="product-name">{product.name}</h1>
+
+           <div className="product-header">
+               <h1 className="product-name">{formatCollectionName(product.name)}</h1>
+               <span className='product-price'>From: ${(product.price * (servingSize.find(option => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}</span>
+
+            </div>    
+
           <p className="product-description">{product.description}</p>
-          <p className="product-price">${product.price}</p>
+          
+          {/* product sizing */}
+      
+          <div className="serving-size-container">
+            {servingSize.map((option) => (
+              <div
+                key={option.id}
+                className={`serving-option ${
+                  selectedSize === option.id ? "selected" : ""
+                }`}
+                onClick={() => setSelectedSize(option.id)}
+              >
+                <div className="circle">{option.size}&#8243;</div>
+                <p className="serving-text">{option.servingCapacity}</p>
+              </div>
+            ))}
+           </div>
+
 
           {/* Call-to-Action Button */}
-          <button className="add-to-cart-button">Add to Cart</button>
+          {/* <button className="add-to-cart-button">Add to Cart</button> */}
         </div>
       </div>
     </div>
