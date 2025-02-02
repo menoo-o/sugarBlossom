@@ -45,7 +45,11 @@ export async function GET( request: Request, { params }:  { params: Promise< { c
             name: product.name,
             description: product.description,
             price: product.price,
-            imageUrl: storage.getFileView(bucketId, product.fileId)
+            imageUrl: storage.getFileView(bucketId, product.fileId), //accessing single img
+            
+            imgspercake: Array.isArray(product.imgspercake) 
+            ? product.imgspercake.map((id: string) => storage.getFileView(bucketId, id)) 
+            : [storage.getFileView(bucketId, product.imgspercake)], // Convert single image to array
         };
 
         return NextResponse.json({ product: productDetails }, { status: 200 });
