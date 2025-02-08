@@ -8,9 +8,8 @@ export async function GET() {
         const { documents } = await databases.listDocuments(
             databaseId, 
             allCakes,
-
             [
-                Query.search("categories", "collections") // Filter by category
+                Query.search("category", "collections") // Filter by category
             ]
         );
 
@@ -18,6 +17,7 @@ export async function GET() {
         const collections = documents.map((doc) => ({
             id: doc.$id, // Use Appwrite's generated Document ID
             name: doc.name,
+            slug : doc.slug,
             imgspercake: Array.isArray(doc.imgspercake)  
             ? storage.getFileView(bucketId, doc.imgspercake[0])  // Get only the first image
             : null, // Handle case where there are no images

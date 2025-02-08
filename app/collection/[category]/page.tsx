@@ -10,11 +10,11 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
 
     try {
         // Fetch products for the category from the API
-        const response = await fetch(`http://localhost:3000/api/collections/${category}`, 
-        {
-            cache: 'force-cache',
-            next: { revalidate: 36000 },
-        }
+        const response = await fetch(`http://localhost:3000/api/collection/${category}`, 
+        // {
+        //     cache: 'force-cache',
+        //     next: { revalidate: 36000 },
+        // }
     );
         const data = await response.json();
         console.log(data)
@@ -34,8 +34,9 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
                     {products.map((product: any) => (
                         <div key={product.id} className="product card">
                             <div className="product-img-container">
+
                             <Link
-                               href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
+                               href={`/products/${product.slug}`}
                                 className="product-single-display-link"
                                 prefetch={true}
                                 
@@ -54,11 +55,11 @@ export default async function CategoryPage({ params }: { params: Promise <{ cate
                            
 
                     <div className="product-info">
-                            <Link  href={`/collections/${category}/products/${product.name.toLowerCase().replace(/ /g, '-')}`}
+                            <Link  href={`/products/${product.slug}`}
                                 className="product-single-display-link"
                                 prefetch={true}
                                 >
-                            <h2 className="product-name">{formatCollectionName(product.name)}</h2>
+                            <h2 className="product-name">{product.name}</h2>
                             </Link>
                             <p className="product-price">From: ${product.price}</p>
                         </div>

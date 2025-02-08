@@ -1,33 +1,22 @@
 // app/api/collections/[category]/route.ts
 
 import { NextResponse } from 'next/server';
-import { databases, databaseId, birthdayCollectionId, weddingCollectionId, bentoCollectionId, cupcakesCollectionId, accessoriesCollectionId, customCollectionId, storage, bucketId } from '@/appwrite/config';
+import { Query } from 'appwrite';
+import { databases, databaseId, allCakes, storage, bucketId } from '@/appwrite/config';
 
-// Mapping of categories to collection IDs
-const COLLECTION_MAPPING: Record <string, string> = {
-    'birthday-cakes': birthdayCollectionId,
-    'wedding-cakes': weddingCollectionId,
-    'bento-cakes': bentoCollectionId,
-    'cupcakes': cupcakesCollectionId,
-    'cakes-accessories': accessoriesCollectionId,
-    'personalized-cakes': customCollectionId
-}; 
 
 export async function GET(request: Request, { params }: { params: Promise <{ category: string }> }) {
     const { category } = await params;
 
     try {
-        // Determine which collection to query based on the category
-        const collectionId = COLLECTION_MAPPING[category]
-
-        //ERROR handling
-        if (!collectionId){
-            return NextResponse.json({error:"invalid collection"}, {status: 400});
-        }
-
-
         // Fetch products from Appwrite
-        const response = await databases.listDocuments(databaseId, collectionId);
+        const response = await databases.listDocuments(
+            databaseId, 
+            allCakes,
+            [
+                Query.search("category", category)
+            ])   
+            ;
 
         
         // Map products to the required format
@@ -36,6 +25,7 @@ export async function GET(request: Request, { params }: { params: Promise <{ cat
             name: doc.name,
             description: doc.description,
             price: doc.price,
+            slug: doc.slug,
             imgspercake: Array.isArray(doc.imgspercake) && doc.imgspercake.length > 0 
             ? storage.getFileView(bucketId, doc.imgspercake[0])  // Get only the first image
             : null, // Handle case where there are no images

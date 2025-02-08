@@ -15,15 +15,6 @@ const databaseId = '6780c3a1003873410f5b';
 const collectionId = '6784df9b0037f1ce3bfe';
 const bucketId = '677e6d21000acd65983c';
 
-const birthdayCollectionId= '67863025002bfc152318'
-
-const weddingCollectionId= '678b557d002bce970e50'
-
-const bentoCollectionId = '678c47450021896b6cf9'
-
-const cupcakesCollectionId = '678c4c07002ee27c7e51'
-const accessoriesCollectionId= ''
-const customCollectionId = ''
 
 const allCakes = '679c7851000cb07801ac'
 
@@ -33,4 +24,4 @@ const allCakes = '679c7851000cb07801ac'
 
 
 
-export { databases, storage, databaseId, collectionId, bucketId, customCollectionId, accessoriesCollectionId, cupcakesCollectionId, bentoCollectionId, birthdayCollectionId, weddingCollectionId, allCakes };
+export { databases, storage, databaseId, collectionId, bucketId, allCakes };

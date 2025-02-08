@@ -6,11 +6,12 @@ import formatCollectionName from '@/utils/formatName';
 
 export default async function CollectionsPage() {
     try {
-        // Fetch collections from the API
-        const response = await fetch('http://localhost:3000/api/collections', {
-            cache: 'force-cache', // Ensures SSG behavior
-            next: { revalidate: 3 },
-        });
+
+        const response = await fetch('http://localhost:3000/api/collection', 
+        // {cache: 'force-cache', 
+        //     next: { revalidate: 3 },
+        // }
+    );
         const data = await response.json();
         if (!response.ok) {
             throw new Error(data.error || 'Failed to fetch collections');
@@ -25,9 +26,10 @@ export default async function CollectionsPage() {
                     {collections.map((collection: any) => (
                         <div key={collection.id} className="collection-card">
 
-                        <Link  href={`/collections/${collection.name}`} > 
+                        <Link  href={`/collection/${collection.slug}`} > 
+
                             <Image  
-                                src={collection.imageUrl}
+                                src={collection.imgspercake}
                                 alt={collection.name}
                                 width={560} // Double the display size for Retina screens
                                 height={600} // Double the display size for Retina screens
@@ -37,9 +39,11 @@ export default async function CollectionsPage() {
                                 priority
                             />
                         </Link>
+                            
                             <h2 className="collection-name">
-                            {formatCollectionName(collection.name)}
+                            {collection.name}
                             </h2>
+
                         </div>
                     ))}
                 </div>
