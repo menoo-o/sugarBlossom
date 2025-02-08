@@ -19,7 +19,7 @@
   overflow: hidden; /* Prevents image overflow */
   display: inline-block;
   width: 100%;
-  background-color: red;
+
 }
 
 .main-product-img {
@@ -61,7 +61,7 @@
   padding: 0 2rem;
 }
 
-.product-name {
+.single-product-name{
   font-size: 2.2em;
   color: var(--sea-green-1);
   margin-bottom: 0rem;
@@ -208,7 +208,7 @@
     text-align: left; /* Align text to the left */
   }
 
-  .product-name {
+  .single-product-name {
     font-size: 2.5rem;
     margin-top: -0.6em;
   }
@@ -229,8 +229,9 @@
   
   
   .circle {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
+    font-size: 0.8rem;
   }
   
 
@@ -255,3 +256,16 @@
   }
 
 }
+
+
+/* spinner */
+/* styles/globals.css */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #333;
+}
+

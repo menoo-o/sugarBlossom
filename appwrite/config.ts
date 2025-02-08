@@ -25,10 +25,12 @@ const cupcakesCollectionId = '678c4c07002ee27c7e51'
 const accessoriesCollectionId= ''
 const customCollectionId = ''
 
+const allCakes = '679c7851000cb07801ac'
 
 
 
 
 
 
-export { databases, storage, databaseId, collectionId, bucketId, customCollectionId, accessoriesCollectionId, cupcakesCollectionId, bentoCollectionId, birthdayCollectionId, weddingCollectionId };
+
+export { databases, storage, databaseId, collectionId, bucketId, customCollectionId, accessoriesCollectionId, cupcakesCollectionId, bentoCollectionId, birthdayCollectionId, weddingCollectionId, allCakes };

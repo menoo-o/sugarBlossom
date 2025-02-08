@@ -12,9 +12,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation'; // Import useParams
 import Image from 'next/image';
 import formatCollectionName from '@/utils/formatName';
+import { Suspense } from 'react';
+
 import './single.css'
 
-export default function ProductPage() {
+function ProductDetails() {
   // Use useParams to get route parameters
   const params = useParams();
   
@@ -134,7 +136,7 @@ export default function ProductPage() {
 
            <div className="product-header">
                <h1 className="product-name">{formatCollectionName(product.name)}</h1>
-               <span className='product-price'>From: ${(product.price * (servingSize.find(option => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}</span>
+               <span className='product-pricey'>From: ${(product.price * (servingSize.find(option => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}</span>
 
             </div>    
 
@@ -156,12 +158,25 @@ export default function ProductPage() {
               </div>
             ))}
            </div>
-
-
-          {/* Call-to-Action Button */}
-          {/* <button className="add-to-cart-button">Add to Cart</button> */}
+         
         </div>
       </div>
+    </div>
+  );
+}
+
+export default function ProductPage() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <ProductDetails  />
+    </Suspense>
+  );
+}
+
+function LoadingSpinner() {
+  return (
+    <div className="loading-spinner">
+      <p>Loading product details...</p>
     </div>
   );
 }
