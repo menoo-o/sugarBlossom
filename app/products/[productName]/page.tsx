@@ -12,171 +12,158 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation'; // Import useParams
 import Image from 'next/image';
 import formatCollectionName from '@/utils/formatName';
+import './single.css'
 import { Suspense } from 'react';
 
-import './single.css'
+
+// Define a type for your product data
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  imgspercake: string[]; // Array of image URLs (each URL is a string)
+}
 
 function ProductDetails() {
-  // Use useParams to get route parameters
+  // Get the dynamic parameter (productName) from the URL
   const params = useParams();
-  
-  const { category, productName } = params as { category: string; productName: string };
+  const { productName } = params as { productName: string };
+  console.log("Product Name from URL:", productName); // Debugging log
 
-  const [product, setProduct] = useState<Product | null>(null);
+  // Local state to hold the product, main image, error message, loading state, and selected serving size
+  const [productData, setProductData] = useState<Product | null>(null);
   const [mainImage, setMainImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
-  
+
+  // Serving size options with multipliers to calculate the price
   const servingSize = [
-    { id: 1, size: "4", servingCapacity: "Serves 3-4 persons", multiplier: 1 }, // Base price
+    { id: 1, size: "4", servingCapacity: "Serves 3-4 persons", multiplier: 1 },
     { id: 2, size: "7", servingCapacity: "Serves 8-12 persons", multiplier: 2 },
     { id: 3, size: "10", servingCapacity: "Serves 18-26 persons", multiplier: 2.5 },
     { id: 4, size: "13", servingCapacity: "Serves 34-50 persons", multiplier: 3 },
   ];
 
-
-  useEffect ( () => {
-    if (!category || !productName) {
-      setError('Invalid category or product name.');
+  // Fetch product data when productName changes
+  useEffect(() => {
+    if (!productName) {
+      setError("Invalid product name.");
       setIsLoading(false);
       return;
     }
 
-    // Fetch product data based on category and productName
-    fetchProductData(category, productName);
-  }, [category, productName]); // Add category and productName as dependencies
-
-  const fetchProductData = async (category: string, productName: string) => {
+  // Function to fetch product data from your API
+  const fetchProductData = async () => {
     try {
-      const apiUrl = `http://localhost:3000/api/collections/${category}/products/${productName}`;
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        throw new Error('Product not found');
-      }
-      const data = await response.json();
-      if (!data.product) {
-        setError('Product not found.');
+      // Construct the API URL safely with encodeURIComponent
+      const response = await fetch(`/api/products/${productName}`);
+        if (!response.ok) {
+          // If the API returns an error status, extract the error message and throw an error
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to fetch product details");
+        }
+        // Parse the JSON response
+        const data = await response.json();
+     
+      
+      if (!data.productData) {
+        setError("Product not found.");
         return;
       }
 
-      setProduct(data.product);
+      setProductData(data.productData);
+      setMainImage(data.productData.imgspercake?.[0] || null);
 
-  
-      setMainImage(data.product.imgspercake?.[0] || null);
-    } catch (err) {
-      setError('Failed to fetch product data.');
+    } catch (err: unknown) {
+      setError("Failed to fetch product data.");
       console.error(err);
     } finally {
       setIsLoading(false);
     }
   };
 
+  fetchProductData();
+  }, [productName]);
+
+  // Display loading, error, or the product details once data is available
   if (isLoading) {
     return <div className="loading-spinner">Loading...</div>;
   }
-
   if (error) {
     return <div className="error-message">{error}</div>;
   }
-
-  if (!product) {
+  if (!productData) {
     return <div className="error-message">Product not found.</div>;
   }
 
-
-
   return (
     <div className="product-display-container">
-
-      {/* Product Details */}
       <div className="product-details">
-        <div className='imgs-container'>
-            {/* Main Product Image */}
-        <div className="product-image-container single">
-        {mainImage && (
+        <div className="imgs-container">
+          {mainImage && (
             <Image
               src={mainImage}
-              alt={`${product.name} - Cake Image`}
+              alt={`${productData.name} - Cake Image`}
               className="main-product-img"
-              width={560} // Double the display size for Retina screens
-              height={600} // Double the display size for Retina screens
-              quality={100} // Ensure maximum quality
-              sizes="(max-width: 768px) 100vw, 50vw" // Responsive sizes
+              width={560}
+              height={600}
+              quality={100}
+              sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
           )}
-        </div>
-
-        {/* Additional Product Images */}
-        <div className="additional-images-container">
-          {product.imgspercake.map((imgUrl: string, index: number) => (
-            <div
-              key={index}
-              className="additional-image-wrapper"
-              onClick={() => setMainImage(imgUrl)} // Update main image on click
-            >
-              <Image
-                src={imgUrl}
-                alt={`${product.name} -Cake Image ${index + 1}`}
-                className="additional-img"
-                width={95} // Smaller size for additional images
-                height={95}
-                quality={100} // Ensure maximum quality
-              />
-            </div>
-          ))}
-        </div>
-        </div>
-      
-
-        {/* Product Information */}
-        <div className="product-info">
-
-           <div className="product-header">
-               <h1 className="product-name">{formatCollectionName(product.name)}</h1>
-               <span className='product-pricey'>From: ${(product.price * (servingSize.find(option => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}</span>
-
-            </div>    
-
-          <p className="product-description">{product.description}</p>
           
-          {/* product sizing */}
-      
+          {/* additional-images-container */}
+          <div className="additional-images-container">
+            {productData.imgspercake.map((imgUrl: string, index: number) => (
+              <div
+                key={index}
+                className="additional-image-wrapper"
+                onClick={() => setMainImage(imgUrl)}
+              >
+                <Image
+                  src={imgUrl}
+                  alt={`${productData.name} - Cake Image ${index + 1}`}
+                  className="additional-img"
+                  width={95}
+                  height={95}
+                  quality={100}
+                  priority
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="product-info">
+          <div className="product-header">
+            <h1 className="product-name">{formatCollectionName(productData.name)}</h1>
+            <span className="product-pricey">
+              From: £{(productData.price * (servingSize.find((option) => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}
+            </span>
+          </div>
+          <p className="product-description">{productData.description}</p>
           <div className="serving-size-container">
             {servingSize.map((option) => (
               <div
                 key={option.id}
-                className={`serving-option ${
-                  selectedSize === option.id ? "selected" : ""
-                }`}
+                className={`serving-option ${selectedSize === option.id ? "selected" : ""}`}
                 onClick={() => setSelectedSize(option.id)}
               >
                 <div className="circle">{option.size}&#8243;</div>
                 <p className="serving-text">{option.servingCapacity}</p>
               </div>
             ))}
-           </div>
-         
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+// Wrap the ProductDetails component in a ProductPage component to export
 export default function ProductPage() {
-  return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <ProductDetails  />
-    </Suspense>
-  );
+  return <ProductDetails />;
 }
 
-function LoadingSpinner() {
-  return (
-    <div className="loading-spinner">
-      <p>Loading product details...</p>
-    </div>
-  );
-}

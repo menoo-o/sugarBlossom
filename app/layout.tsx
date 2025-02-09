@@ -20,7 +20,7 @@ export default function RootLayout({
         <Marquee />
         <Navbar />
         {children}
-       <Footer /> 
+        <Footer />
       </body>
     </html>
   );

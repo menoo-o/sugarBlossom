@@ -10,30 +10,33 @@ export async function GET( request: Request, { params }:  { params: Promise< { p
     const { productName } = await params;
 
     try {
-
-          // Fetch the cake from the collection based on slug
-          const response = await databases.listDocuments(
-            databaseId, 
-            allCakes,
-            [Query.equal("slug", productName)]
+        // Fetch the cake from the collection based on slug
+        const response = await databases.listDocuments(
+          databaseId, // Replace with your database ID
+          allCakes,   // Replace with your collection ID
+          [Query.equal("slug", productName)] // Query to find the document by slug
         );
-
-        // Check if the product exists
+    
+        // Extract the first document from the response
         const product = response.documents[0];
+    
+        // Check if the product exists
         if (!product) {
-            return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+          return NextResponse.json({ error: "Product not found" }, { status: 404 });
         }
 
-          // Return the product details
-          return NextResponse.json({
+        const productData ={ 
             id: product.$id,
             name: product.name,
             description: product.description,
             price: product.price,
             imgspercake: Array.isArray(product.imgspercake) 
             ? product.imgspercake.map((id: string) => storage.getFileView(bucketId, id)) 
-            : [storage.getFileView(bucketId, product.imgspercake)], // Convert single image to array
-        });
+            : [storage.getFileView(bucketId, product.imgspercake)],
+     }
+
+          // Return the product details
+          return NextResponse.json({productData}, {status: 200});
 
         
     } catch (error) {
