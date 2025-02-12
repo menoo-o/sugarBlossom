@@ -12,10 +12,8 @@ import Slider from '@/components/sliderswiper/Slider'
 export default async function Home() {
   try {
     // Fetch collections from the API
-    const response = await fetch('http://localhost:3000/api/hero', {
-      cache: 'force-cache', // Ensures SSG behavior
-      next: { revalidate: 3600 }, // Revalidate every hour
-    });
+    const response = await fetch('http://localhost:3000/api/hero', 
+  );
     const data = await response.json();
 
     if (!response.ok) {

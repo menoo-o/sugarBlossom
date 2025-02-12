@@ -5,9 +5,9 @@ import './offer.css'
 export default function Offerings() {
 
     const offeringImgs = [
-        { id: 1, img: "/occasion/hbd.jpg", title: "Cakes" },
-        { id: 2, img: "/cup1.jpg", title: "CupCakes" },
-        { id: 3, img: "/bento.webp", title: "Bento Cakes" },
+        { id: 1, img: "/allcakes.webp", title: "All Cakes" },
+        { id: 2, img: "/cupcakesv6.webp", title: "CupCakes" },
+        { id: 3, img: "/wedding.jpg", title: "Wedding Cakes" },
       ];
 
   

@@ -13,7 +13,7 @@ const storage = new Storage(client);
 // Your database, collection, and bucket IDs
 const databaseId = '6780c3a1003873410f5b';
 const collectionId = '6784df9b0037f1ce3bfe';
-const bucketId = '677e6d21000acd65983c';
+const bucketId = '67ac90520010d064abdf';
 
 
 const allCakes = '679c7851000cb07801ac'

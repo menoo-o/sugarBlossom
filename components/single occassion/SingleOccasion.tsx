@@ -16,6 +16,7 @@ export default function SingleOccasion({ img, title, price, className }: SingleO
           <Image
             src={img}
             alt={title}
+            quality={100}
             fill // Dynamically fill the container
             sizes="(max-width: 768px) 100px, (min-width: 769px) 300px" // Set responsive sizes
             className="occasion-img"
