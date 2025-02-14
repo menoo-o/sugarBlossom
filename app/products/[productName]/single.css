@@ -114,9 +114,9 @@
 }
 
 .circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 95px;
+  height: 30px;
+  border-radius: 20px;
   background-color: var(--bg-color2);
   display: flex;
   justify-content: center;
@@ -230,7 +230,7 @@
   
   .circle {
     width: 45px;
-    height: 45px;
+    height: 15px;
     font-size: 0.8rem;
   }
   
@@ -251,8 +251,8 @@
   }
 
   .circle {
-    width: 65px;
-    height: 65px;
+    width: 105px;
+    height: 40px;
   }
 
 }

@@ -13,7 +13,6 @@ import { useParams } from 'next/navigation'; // Import useParams
 import Image from 'next/image';
 import formatCollectionName from '@/utils/formatName';
 import './single.css'
-import { Suspense } from 'react';
 
 
 // Define a type for your product data
@@ -135,16 +134,23 @@ function ProductDetails() {
               </div>
             ))}
           </div>
+
         </div>
         <div className="product-info">
+
           <div className="product-header">
             <h1 className="product-name">{formatCollectionName(productData.name)}</h1>
+
             <span className="product-pricey">
               From: £{(productData.price * (servingSize.find((option) => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}
             </span>
           </div>
+
           <p className="product-description">{productData.description}</p>
+          <p className='select-size'>Select your Size</p>
           <div className="serving-size-container">
+           
+
             {servingSize.map((option) => (
               <div
                 key={option.id}
@@ -155,6 +161,8 @@ function ProductDetails() {
                 <p className="serving-text">{option.servingCapacity}</p>
               </div>
             ))}
+
+
           </div>
         </div>
       </div>
