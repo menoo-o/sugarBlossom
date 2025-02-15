@@ -6,6 +6,7 @@ export interface Product {
   description?: string,
   imgspercake: string[],
   flavors: string[]; // List of available flavors
+  variants? : string[];
   sizes?: number[]; // List of available sizes (Now a number[])
 }
 

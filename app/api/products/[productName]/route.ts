@@ -30,6 +30,7 @@ export async function GET( request: Request, { params }:  { params: Promise< { p
             name: product.name,
             description: product.description,
             price: product.price,
+            variants: product.variants,
             flavors: product.flavors,
             imgspercake: Array.isArray(product.imgspercake) 
             ? product.imgspercake.map((id: string) => storage.getFileView(bucketId, id)) 

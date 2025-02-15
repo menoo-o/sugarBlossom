@@ -110,7 +110,7 @@ function ProductDetails() {
 
 
 
-
+  const variant = JSON.parse(productData.variants[0]);
 
   return (
     <div className="product-display-container">
@@ -217,11 +217,13 @@ function ProductDetails() {
               
               </button>
 
-              <br />
+            <br />
+            
+            <h1>Size: {variant.size}</h1>
+<h2>Price: ${variant.price*2}</h2>
+             <br />
 
-              <button onClick={() => console.log('Cart:', useCartStore.getState().products)}>
-  Show Cart in Console
-</button>
+ 
               
         </div>
       </div>
