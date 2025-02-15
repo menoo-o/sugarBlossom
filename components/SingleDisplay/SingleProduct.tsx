@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { useCartStore } from '@/cart'; // Import your Zustand store
+import { useCartStore } from '@/store/cart'; // Import your Zustand store
 
 interface SingleProduct {
   id: number; // Added `id` to identify the product

@@ -3,17 +3,20 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 // Define the shape of a product
 interface Product {
-  id: number;
+  id: string;
   name: string;
   price: number;
+  image: string;
+  flavor: string;
+  size: string;
 }
 
 // Define the shape of the cart
 interface Cart {
   products: (Product & { quantity: number })[]; // Array of Products with an additional quantity property
   hydrated: boolean; // Track hydration state
-  addItem: (product: Product) => void; // Add a product to the cart
-  removeItem: (id: number) => void; // Remove a product from the cart
+  addItem: (product: Product, flavor:string, size:string) => void; // Add a product to the cart
+  removeItem: (id: string) => void; // Remove a product from the cart
   total: () => number; // Calculate the total price of the cart
   setHydrated: (hydrated: boolean) => void; // Function to set hydration state
 }
@@ -26,7 +29,7 @@ export const useCartStore = create<Cart>()(
       hydrated: false, // Initial hydration state
 
       // Add a product to the cart
-      addItem: (product) =>
+      addItem: (product,) =>
         set((state) => {
           // Check if the product already exists in the cart
           const existingProduct = state.products.find((p) => p.id === product.id);

@@ -22,6 +22,7 @@ interface Product {
   description: string;
   price: number;
   imgspercake: string[]; // Array of image URLs (each URL is a string)
+  flavors: string[];
 }
 
 function ProductDetails() {
@@ -36,6 +37,7 @@ function ProductDetails() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
+  const [selectedFlavor, setSelectedFlavor] = useState<string | null>(null);
 
   // Serving size options with multipliers to calculate the price
   const servingSize = [
@@ -44,6 +46,10 @@ function ProductDetails() {
     { id: 3, size: "10", servingCapacity: "Serves 18-26 persons", multiplier: 2.5 },
     { id: 4, size: "13", servingCapacity: "Serves 34-50 persons", multiplier: 3 },
   ];
+
+
+
+  
 
   // Fetch product data when productName changes
   useEffect(() => {
@@ -99,6 +105,7 @@ function ProductDetails() {
 
   return (
     <div className="product-display-container">
+
       <div className="product-details">
         <div className="imgs-container">
           {mainImage && (
@@ -147,9 +154,10 @@ function ProductDetails() {
           </div>
 
           <p className="product-description">{productData.description}</p>
+       
+          {/* serving size */}
           <p className='select-size'>Select your Size</p>
-          <div className="serving-size-container">
-           
+          <div className="serving-size-container flavor-container">
 
             {servingSize.map((option) => (
               <div
@@ -164,6 +172,34 @@ function ProductDetails() {
 
 
           </div>
+
+     
+            {/* flavor container */}
+            <p className='select-flavor'>Select your Flavor</p>
+            <div className="flavor-container">
+            {productData.flavors.map((flavor) => (
+              <div
+                key={flavor}
+               className={`flavor ${
+                selectedFlavor === flavor ? 
+                'selected' : 
+                ''}`}
+               onClick={() => setSelectedFlavor(flavor)}
+              >
+
+              <p>{flavor}</p>
+               
+              </div>
+            ))}
+            </div>
+
+            {/* price */}
+            <span className="product-pricey">
+              From: £{(productData.price * (servingSize.find((option) => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}
+            </span>
+            <br />
+            {/* add to cart */}
+            <button> add to cart</button>
         </div>
       </div>
     </div>

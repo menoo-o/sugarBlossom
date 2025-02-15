@@ -1,53 +1,49 @@
-'use client';
+// app/cart/page.tsx
+'use client'; // Mark as a Client Component
+import { useCartStore } from "@/store/cart";
 
-import React from 'react';
-import Link from 'next/link';
-import { useCartStore } from '@/cart'; // Import your Zustand store
-
-const Cart: React.FC = () => {
-  const products = useCartStore((state) => state.products);
-  const addItem = useCartStore((state) => state.addItem);
-  const removeItem = useCartStore((state) => state.removeItem);
-  const total = useCartStore((state) => state.total());
-  const hydrated = useCartStore((state) => state.hydrated);
-
-  if (!hydrated) {
-    // Optionally show a loading state while hydration is incomplete
-    return <p>Loading...</p>;
-  }
+export default function CartPage() {
+  const { cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart } =
+    useCartStore();
 
   return (
-    <div>
-      <h1>Shopping Cart</h1>
-
-      {/* Render the cart items if items exist in the cart */}
-      {products.length > 0 ? (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>
-              <div>
-                <p>{product.name}</p>
-                <p>Price: ${product.price.toFixed(2)}</p>
-                <p>Quantity: {product.quantity}</p>
-              </div>
-
-              <div>
-                <button onClick={() => addItem(product)}>+</button>
-                <button onClick={() => removeItem(product.id)}>Remove</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
+    <div className="cart-page">
+      <h1>Your Cart</h1>
+      {cart.length === 0 ? (
         <p>Your cart is empty.</p>
+      ) : (
+        <>
+          {cart.map((item) => (
+            <div key={item.product.name} className="cart-item">
+              <img
+                src={item.product.imgspercake[0]}
+                alt={item.product.name}
+                className="cart-item-image"
+              />
+              <div className="cart-item-details">
+                <h3>{item.product.name}</h3>
+                <p>Flavor: {item.flavor}</p>
+                <p>Size: {item.size}</p>
+                <p>Quantity: {item.quantity}</p>
+                <p>Price: £{(item.product.price * item.quantity).toFixed(2)}</p>
+                <div className="quantity-controls">
+                  <button onClick={() => decreaseQuantity(item.product.name)}>
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => increaseQuantity(item.product.name)}>
+                    +
+                  </button>
+                </div>
+                <button onClick={() => removeFromCart(item.product.name)}>
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+          <button onClick={clearCart}>Clear Cart</button>
+        </>
       )}
-
-      {/* Display the total */}
-      <div>Total: ${total.toFixed(2)}</div>
-
-      <br /> <Link href='/single'>back to shopping</Link>
     </div>
   );
-};
-
-export default Cart;
+}
