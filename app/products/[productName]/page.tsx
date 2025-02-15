@@ -1,29 +1,15 @@
 'use client'; // Mark this as a Client Component
 
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  imgspercake: string[]; // Array of image URLs
-}
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation'; // Import useParams
 import Image from 'next/image';
 import formatCollectionName from '@/utils/formatName';
 import './single.css'
-
+import { useCartStore } from '@/store/cart';
+import { Product } from '@/lib/types/product';
 
 // Define a type for your product data
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  imgspercake: string[]; // Array of image URLs (each URL is a string)
-  flavors: string[];
-}
 
 function ProductDetails() {
   // Get the dynamic parameter (productName) from the URL
@@ -36,8 +22,11 @@ function ProductDetails() {
   const [mainImage, setMainImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [selectedSize, setSelectedSize] = useState<number | null>(null);
-  const [selectedFlavor, setSelectedFlavor] = useState<string | null>(null);
+
+  const [selectedSize, setSelectedSize] = useState<number | null>(null); // size as number
+
+  const [selectedFlavor, setSelectedFlavor] = useState<string>('');
+  const addToCart = useCartStore((state)=> state.addItem);  
 
   // Serving size options with multipliers to calculate the price
   const servingSize = [
@@ -46,6 +35,8 @@ function ProductDetails() {
     { id: 3, size: "10", servingCapacity: "Serves 18-26 persons", multiplier: 2.5 },
     { id: 4, size: "13", servingCapacity: "Serves 34-50 persons", multiplier: 3 },
   ];
+
+
 
 
 
@@ -102,6 +93,24 @@ function ProductDetails() {
   if (!productData) {
     return <div className="error-message">Product not found.</div>;
   }
+
+
+  const handleAddToCart = () => {
+    if (!selectedFlavor || selectedSize === null) {
+      alert('Please select a flavor and size.');
+      return;
+    }
+  
+    addToCart(productData, selectedFlavor, selectedSize ?? 0); // Ensure size is always a number
+    console.log('Cart Updated:', useCartStore.getState().products);
+    alert('Product added to cart!');
+  };
+
+  
+
+
+
+
 
   return (
     <div className="product-display-container">
@@ -198,8 +207,22 @@ function ProductDetails() {
               From: £{(productData.price * (servingSize.find((option) => option.id === selectedSize)?.multiplier || 1)).toFixed(2)}
             </span>
             <br />
+            
             {/* add to cart */}
-            <button> add to cart</button>
+            <button 
+               onClick={handleAddToCart}
+            >
+              
+              Add to Cart
+              
+              </button>
+
+              <br />
+
+              <button onClick={() => console.log('Cart:', useCartStore.getState().products)}>
+  Show Cart in Console
+</button>
+              
         </div>
       </div>
     </div>

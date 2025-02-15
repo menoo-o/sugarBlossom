@@ -1,74 +1,54 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { Cart } from '@/lib/types/product';
 
-// Define the shape of a product
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  flavor: string;
-  size: string;
-}
-
-// Define the shape of the cart
-interface Cart {
-  products: (Product & { quantity: number })[]; // Array of Products with an additional quantity property
-  hydrated: boolean; // Track hydration state
-  addItem: (product: Product, flavor:string, size:string) => void; // Add a product to the cart
-  removeItem: (id: string) => void; // Remove a product from the cart
-  total: () => number; // Calculate the total price of the cart
-  setHydrated: (hydrated: boolean) => void; // Function to set hydration state
-}
-
-// Create the Zustand store
 export const useCartStore = create<Cart>()(
   persist(
     (set, get) => ({
       products: [],
-      hydrated: false, // Initial hydration state
+      hydrated: false,
 
-      // Add a product to the cart
-      addItem: (product,) =>
+      addItem: (product, flavor, size) =>
         set((state) => {
-          // Check if the product already exists in the cart
-          const existingProduct = state.products.find((p) => p.id === product.id);
+          // Check if an item with the same id, flavor, and size exists
+          const existingProduct = state.products.find(
+            (p) => p.id === product.id && p.flavor === flavor && p.size === size
+          );
 
           return {
             products: existingProduct
               ? state.products.map((p) =>
-                  p.id === product.id
-                    ? { ...p, quantity: p.quantity + 1 } // Increment quantity
+                  p.id === product.id && p.flavor === flavor && p.size === size
+                    ? { ...p, quantity: p.quantity + 1 } // Increase quantity
                     : p
                 )
               : [
                   ...state.products,
-                  { ...product, quantity: 1 }, // Add new product with quantity 1
+                  { ...product, flavor, size, quantity: 1 }, // Add new unique variant
                 ],
           };
         }),
 
-      // Remove a product from the cart
-      removeItem: (id) =>
+      removeItem: (id, flavor, size) =>
         set((state) => ({
-          products: state.products.filter((p) => p.id !== id),
+          products: state.products.filter(
+            (p) => !(p.id === id && p.flavor === flavor && p.size === size)
+          ),
         })),
 
-      // Calculate the total price of the cart
       total: () =>
         get().products.reduce(
           (sum, product) => sum + product.price * product.quantity,
           0
         ),
 
-      // Set hydration state
       setHydrated: (hydrated) => set({ hydrated }),
     }),
     {
-      name: 'cart-storage', // Key for localStorage
-      storage: createJSONStorage(() => localStorage), // Use localStorage
+      name: 'cart-storage',
+      storage: createJSONStorage(() => localStorage),
       onRehydrateStorage: () => (state) => {
-        state?.setHydrated(true); // Set hydrated to true once hydration completes
+        state?.setHydrated(true);
       },
     }
   )
